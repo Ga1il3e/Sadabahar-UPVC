@@ -1,0 +1,8 @@
+{
+  "name": "sadabahar-upvc",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "vercel-build": "echo \"Static site build: no framework compile step required.\""
+  }
+}
