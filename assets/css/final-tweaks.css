@@ -1,0 +1,144 @@
+.scroll-panel .panel-inner {
+  position: relative;
+  max-width: min(980px, calc(100% - 36px));
+  z-index: 1;
+}
+
+.scroll-panel .panel-inner::before {
+  content: "";
+  position: absolute;
+  inset: -26px -28px;
+  z-index: -1;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(150deg, rgba(7, 10, 17, 0.48), rgba(11, 16, 24, 0.4)),
+    radial-gradient(circle at 20% 20%, rgba(232, 125, 62, 0.1), transparent 60%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.panel-title {
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.25),
+    0 24px 44px rgba(0, 0, 0, 0.52);
+}
+
+.panel-lede {
+  color: rgba(236, 242, 250, 0.9);
+  text-shadow: 0 8px 26px rgba(0, 0, 0, 0.5);
+}
+
+.gif-vignette {
+  background:
+    radial-gradient(circle at 50% 42%, transparent 20%, rgba(9, 13, 20, 0.36) 66%, rgba(8, 12, 18, 0.7) 100%),
+    linear-gradient(to bottom, rgba(7, 10, 15, 0.48) 0%, rgba(7, 10, 15, 0.2) 22%, transparent 36%, transparent 66%, rgba(7, 10, 15, 0.58) 100%) !important;
+}
+
+@media (max-width: 900px) {
+  .scroll-panel .panel-inner::before {
+    inset: -18px -16px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .scroll-panel .panel-inner {
+    max-width: calc(100% - 20px);
+  }
+
+  .scroll-panel .panel-inner::before {
+    inset: -12px -10px;
+    border-radius: 14px;
+    backdrop-filter: blur(7px);
+  }
+}
+
+/* Minimal content mode: keep only high-value text */
+.marquee-band,
+#compare,
+.service-tags,
+.property-desc,
+.profile-tag,
+.final-cta-note {
+  display: none !important;
+}
+
+.hud-corner.tr,
+.hud-corner.bl,
+.hud-corner.br {
+  display: none !important;
+}
+.hud-corner.tl {
+  display: none !important;
+}
+
+.service-desc {
+  margin-bottom: 0 !important;
+  opacity: 0.92;
+}
+
+.foot-tag {
+  display: none;
+}
+
+/* Hero popup boxes: smaller and left aligned */
+.scroll-panel .panel-inner {
+  width: min(560px, calc(100% - 120px)) !important;
+  margin-left: 72px !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Force later popup to stay left, not centered */
+#panel4 .panel-inner {
+  text-align: left !important;
+}
+#panel4 .panel-meta {
+  justify-content: flex-start !important;
+}
+#panel4 .panel-lede {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+#panel4 .panel-cta {
+  justify-content: flex-start !important;
+}
+
+@media (max-width: 900px) {
+  .scroll-panel .panel-inner {
+    width: min(520px, calc(100% - 36px)) !important;
+    margin-left: 18px !important;
+  }
+}
+
+/* Ultra-minimal homepage: Hero -> Services -> Offices -> Contact */
+#profiles,
+#science,
+#compare,
+footer {
+  display: none !important;
+}
+
+.nav-links a[href="#profiles"],
+.nav-links a[href="#science"] {
+  display: none !important;
+}
+
+/* First-load hero clarity image */
+.opening-image-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.opening-image-overlay.is-hidden {
+  opacity: 0;
+}

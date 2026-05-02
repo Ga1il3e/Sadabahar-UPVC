@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sadabahar UPVC — From a house, to a window, to its DNA.</title>
+<meta name="description" content="Premium UPVC windows, doors, partitions and metal fabrication in Nepal. Profiles imported from Baydee, Henan. Pokhara · Chitwan · since 2016." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Albert+Sans:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/final-tweaks.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg-2: #0f1520;
+    --bg-3: #161e2c;
+    --paper: #f5f1e8;
+    --ink: #f5f1e8;
+    --ink-soft: #a8b3c4;
+    --ink-mute: #5a6781;
+    --rule: #1f2a3d;
+    --copper: #e87d3e;
+    --copper-bright: #f5a06a;
+    --teal: #4a9d96;
+    --gold: #d4a574;
+    --serif: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+    --sans: "Albert Sans", "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", monospace;
+    --cinema-progress: 0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: auto; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  .aurora {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; overflow: hidden;
+  }
+  .aurora::before, .aurora::after {
+    content: ""; position: absolute;
+    width: 80vw; height: 80vw;
+    border-radius: 50%;
+    filter: blur(120px); opacity: 0.3;
+    animation: drift 22s ease-in-out infinite;
+  }
+  .aurora::before {
+    background: radial-gradient(circle, var(--copper), transparent 60%);
+    top: -20%; left: -10%;
+  }
+  .aurora::after {
+    background: radial-gradient(circle, var(--teal), transparent 60%);
+    bottom: -30%; right: -20%;
+    animation-delay: -11s; animation-duration: 28s;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(8vw, -4vw) scale(1.1); }
+    66% { transform: translate(-6vw, 6vw) scale(0.95); }
+  }
+
+  body::after {
+    content: ""; position: fixed; inset: 0;
+    pointer-events: none; z-index: 2;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.85;
+  }
+
+  ::selection { background: var(--copper); color: var(--bg); }
+
+  .cursor-dot, .cursor-ring {
+    position: fixed; pointer-events: none; z-index: 9999;
+    top: 0; left: 0; transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+  }
+  .cursor-dot { width: 6px; height: 6px; background: #fff; border-radius: 50%; }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
+  }
+  .cursor-ring.hover { width: 60px; height: 60px; border-color: var(--copper); }
+
+  @media (max-width: 900px) {
+    body { cursor: auto; }
+    .cursor-dot, .cursor-ring { display: none; }
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100; padding: 12px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    backdrop-filter: blur(18px);
+    background: linear-gradient(180deg, rgba(6, 9, 14, 0.82), rgba(10, 14, 20, 0.58));
+    border-bottom: 1px solid transparent;
+    opacity: 0.04;
+    transition: border-color .3s ease, opacity .35s ease, background .35s ease;
+  }
+  nav.scrolled {
+    border-bottom-color: color-mix(in srgb, var(--rule) 72%, var(--copper) 28%);
+    opacity: 1;
+  }
+  .nav-mark {
+    font-family: var(--serif); font-size: 22px;
+    letter-spacing: -0.01em;
+    display: flex; align-items: baseline; gap: 10px;
+    cursor: none;
+  }
+  .nav-mark em { font-style: italic; color: var(--copper); font-size: 18px; }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--ink); text-decoration: none;
+    position: relative; padding: 4px 0; cursor: none;
+    transition: color .25s ease, opacity .25s ease;
+  }
+  .nav-links a:hover { color: var(--copper-bright); }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px; background: var(--copper);
+    transition: width .3s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    position: relative;
+    background: linear-gradient(120deg, #00875a, #00a86b);
+    color: #f8f9fa !important;
+    padding: 8px 15px; border-radius: 999px;
+    font-family: var(--mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0, 168, 107, 0.28);
+    filter: brightness(1.06);
+  }
+  .nav-cta::after { display: none !important; }
+
+  @media (max-width: 800px) {
+    nav { padding: 10px 14px; }
+    .nav-links { gap: 0; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .nav-cta {
+      padding: 7px 12px;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  /* CINEMA */
+  .cinema-stage {
+    position: relative;
+    height: 600vh;
+    z-index: 5;
+  }
+  .cinema-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+  #three-canvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .gif-sequence {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 45%, rgba(245, 249, 250, 0.06), rgba(5, 5, 8, 0.85));
+  }
+  .frame-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: scale(1.01);
+    filter: saturate(1.08) contrast(1.04);
+    will-change: contents;
+  }
+  .gif-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 42%, transparent 22%, rgba(10, 14, 20, 0.28) 70%, rgba(10, 14, 20, 0.62) 100%),
+      linear-gradient(to bottom, rgba(10, 14, 20, 0.24) 0%, transparent 24%, transparent 68%, rgba(10, 14, 20, 0.45) 100%);
+  }
+
+  .hud {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .hud-corner {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .hud-corner.tl { top: 110px; left: 40px; }
+  .hud-corner.tr { top: 110px; right: 40px; text-align: right; }
+  .hud-corner.bl { bottom: 60px; left: 40px; }
+  .hud-corner.br { bottom: 60px; right: 40px; text-align: right; }
+  .hud-corner .strong { color: var(--copper); display: inline-block; margin-right: 8px; }
+  .hud-corner .stage-num {
+    color: var(--copper);
+    font-size: 38px;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    display: block;
+    margin-top: 8px;
+  }
+  @media (max-width: 800px) {
+    .hud-corner.tr, .hud-corner.br { display: none; }
+    .hud-corner.tl { top: 90px; left: 20px; }
+    .hud-corner.bl { bottom: 30px; left: 20px; }
+    .hud-corner .stage-num { font-size: 30px; }
+    .hud-corner { letter-spacing: 0.15em; }
+  }
+
+  .scroll-panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 8;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .scroll-panel.active { opacity: 1; }
+  .panel-inner {
+    width: 100%;
+    padding: 0 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  @media (max-width: 800px) { .panel-inner { padding: 0 22px; } }
+
+  .panel-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .panel-meta .pulse {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--copper);
+    box-shadow: 0 0 0 0 rgba(232, 125, 62, 0.7);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    70% { box-shadow: 0 0 0 14px rgba(232, 125, 62, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(232, 125, 62, 0); }
+  }
+
+  .panel-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 124px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    max-width: 900px;
+    background: linear-gradient(180deg, rgba(245, 241, 232, 0.98) 0%, rgba(232, 125, 62, 0.88) 115%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    transform: translateY(calc((0.5 - var(--cinema-progress)) * 14px));
+    transition: transform .35s ease;
+  }
+  .panel-title em {
+    font-style: italic;
+    color: transparent;
+    background: linear-gradient(180deg, #f5b287 0%, #e87d3e 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .panel-lede {
+    font-family: var(--serif);
+    font-size: clamp(18px, 1.5vw, 22px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin-top: 30px;
+    transform: translateY(calc((0.5 - var(--cinema-progress)) * 8px));
+    transition: transform .35s ease, opacity .35s ease;
+  }
+  .panel-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-top: 40px;
+    pointer-events: auto;
+  }
+
+  .btn-primary {
+    position: relative;
+    background: linear-gradient(125deg, #00875a, #00a86b);
+    color: #f8f9fa;
+    padding: 18px 32px; border-radius: 999px;
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    text-decoration: none; font-weight: 500;
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    cursor: none;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(0, 168, 107, 0.34);
+    filter: brightness(1.06);
+  }
+  .btn-ghost {
+    color: var(--ink); padding: 18px 26px;
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    text-decoration: none;
+    border: 1px solid var(--ink-soft);
+    border-radius: 999px;
+    transition: border-color .25s, color .25s, background-color .25s;
+    cursor: none;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-ghost:hover {
+    border-color: var(--copper);
+    color: var(--copper);
+    background-color: rgba(232, 125, 62, 0.06);
+  }
+
+  .layer-caption {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    z-index: 9;
+    background: rgba(15, 21, 32, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 24px 32px;
+    min-width: 380px;
+    max-width: 540px;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    text-align: center;
+  }
+  .layer-caption.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .layer-caption .num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--copper);
+    margin-bottom: 10px;
+  }
+  .layer-caption .name {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    line-height: 1.05;
+  }
+  .layer-caption .name em { font-style: italic; color: var(--copper); }
+  .layer-caption .desc {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .progress-rail {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--rule);
+    z-index: 50;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--copper), var(--copper-bright));
+    width: 0%;
+    transition: width 0.15s linear;
+  }
+
+  .stage-dots {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  @media (max-width: 1100px) { .stage-dots { display: none; } }
+
+  .stage-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ink-mute) 82%, #fff 18%);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: none;
+  }
+  .stage-dot.active { background: var(--copper); transform: scale(1.4); }
+  .stage-dot::after {
+    content: attr(data-label);
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .stage-dot:hover::after, .stage-dot.active::after { opacity: 1; color: var(--copper); }
+
+  /* Rest of page */
+  section { position: relative; z-index: 5; }
+  .section-head {
+    padding: 130px 40px 60px;
+    max-width: 1400px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px; align-items: end;
+  }
+  @media (max-width: 800px) { .section-head { grid-template-columns: 1fr; padding: 90px 22px 40px; gap: 16px; } }
+  .section-num {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--copper);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--copper);
+  }
+  .section-title {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(44px, 6vw, 96px);
+    line-height: 0.98; letter-spacing: -0.025em;
+  }
+  .section-title em { font-style: italic; color: var(--copper); }
+
+  .marquee-band {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0; overflow: hidden;
+    background: var(--bg-2); position: relative; z-index: 5;
+  }
+  .marquee-track {
+    display: flex; gap: 60px; white-space: nowrap;
+    animation: marquee 38s linear infinite;
+    font-family: var(--serif); font-style: italic;
+    font-size: 26px; color: var(--ink); font-weight: 400;
+  }
+  .marquee-track.reverse { animation-direction: reverse; animation-duration: 50s; }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 60px; }
+  .marquee-track .sep { color: var(--copper); font-style: normal; font-family: var(--sans); font-size: 14px; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .profiles { padding: 0 40px 100px; max-width: 1400px; margin: 0 auto; }
+  @media (max-width: 800px) { .profiles { padding: 0 22px 60px; } }
+  .profile-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-top: 30px;
+  }
+  @media (max-width: 900px) { .profile-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .profile-grid { grid-template-columns: 1fr; } }
+  .profile {
+    background: var(--bg-2); padding: 36px 30px;
+    transition: background .35s; cursor: none;
+    position: relative; overflow: hidden;
+  }
+  .profile:hover { background: var(--bg-3); }
+  .profile::before {
+    content: ""; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--copper), var(--gold), var(--teal));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+  .profile:hover::before { transform: scaleX(1); }
+  .profile-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+  .profile-series { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--copper); }
+  .profile-style { font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; color: var(--ink-mute); text-transform: uppercase; }
+  .profile-name { font-family: var(--serif); font-size: 56px; font-weight: 400; letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+  .profile-tag { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--ink-soft); margin-bottom: 26px; }
+  .profile-mini { width: 80px; height: 80px; margin-bottom: 20px; }
+  .profile-mini svg { width: 100%; height: 100%; }
+  .profile-specs { border-top: 1px solid var(--rule); padding-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .profile-spec-row { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; }
+  .profile-spec-row .lbl { color: var(--ink-mute); }
+  .profile-spec-row .val { color: var(--ink); }
+
+  .services { padding: 0 40px 100px; max-width: 1400px; margin: 0 auto; }
+  @media (max-width: 800px) { .services { padding: 0 22px 60px; } }
+  .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 30px; }
+  @media (max-width: 900px) { .service-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .service-grid { grid-template-columns: 1fr; } }
+  .service {
+    background: var(--bg-2); border: 1px solid var(--rule);
+    padding: 36px 30px; border-radius: 6px;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s, background 0.3s;
+    transform-style: preserve-3d;
+    cursor: none; min-height: 320px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .service:hover { border-color: var(--copper); background: var(--bg-3); }
+  .service::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(232, 125, 62, 0.08), transparent 40%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .service:hover::after { opacity: 1; }
+  .service-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--copper); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .service-num::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  .service-icon { width: 56px; height: 56px; margin-bottom: 24px; }
+  .service-icon svg { width: 100%; height: 100%; }
+  .service-name { font-family: var(--serif); font-size: 30px; font-weight: 400; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 12px; }
+  .service-name em { font-style: italic; color: var(--copper); }
+  .service-desc { font-family: var(--serif); font-size: 16px; line-height: 1.5; color: var(--ink-soft); margin-bottom: 24px; flex: 1; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .service-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mute); border: 1px solid var(--rule); padding: 5px 10px; border-radius: 999px; }
+
+  .science { padding: 0 40px 100px; max-width: 1400px; margin: 0 auto; }
+  @media (max-width: 800px) { .science { padding: 0 22px 70px; } }
+  .science-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--rule);
+    margin-top: 40px; border: 1px solid var(--rule);
+  }
+  @media (max-width: 900px) { .science-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .science-grid { grid-template-columns: 1fr; } }
+  .property {
+    background: var(--bg-2); padding: 38px 28px;
+    min-height: 360px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: background .3s; position: relative; overflow: hidden;
+  }
+  .property::before {
+    content: ""; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: var(--copper);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .5s ease;
+  }
+  .property:hover { background: var(--bg-3); }
+  .property:hover::before { transform: scaleX(1); }
+  .property-icon { width: 64px; height: 64px; margin-bottom: 24px; }
+  .property-icon svg { width: 100%; height: 100%; }
+  .property-stat { font-family: var(--serif); font-size: 70px; font-weight: 400; letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+  .property-stat .unit { font-size: 0.4em; color: var(--ink-soft); font-style: italic; }
+  .property-name { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--copper); margin-bottom: 14px; }
+  .property-desc { font-family: var(--serif); font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+
+  .compare {
+    background: var(--bg-2); padding: 100px 40px;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  @media (max-width: 800px) { .compare { padding: 70px 22px; } }
+  .compare-inner { max-width: 1400px; margin: 0 auto; }
+  .compare-table { margin-top: 50px; border-top: 1px solid var(--copper); }
+  .compare-row {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0; align-items: center;
+  }
+  .compare-row.head { border-bottom: 1px solid var(--copper); padding: 20px 0; }
+  .compare-row.head > div { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); }
+  .compare-row.head > .upvc { color: var(--copper); }
+  .compare-row > div { padding: 0 14px; }
+  .compare-row .label { font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: -0.01em; }
+  .compare-row .label em { font-style: italic; color: var(--ink-mute); font-size: 14px; display: block; margin-top: 4px; font-family: var(--sans); font-weight: 300; }
+  .compare-row .val { font-family: var(--serif); font-size: 19px; color: var(--ink-soft); }
+  .compare-row .val.win { color: var(--copper); font-style: italic; }
+  @media (max-width: 700px) {
+    .compare-row { grid-template-columns: 1fr 1fr; gap: 8px; padding: 16px 0; }
+    .compare-row.head .label { grid-column: 1 / -1; }
+    .compare-row .label { font-size: 18px; }
+  }
+
+  .offices { padding: 0 40px 100px; max-width: 1400px; margin: 0 auto; }
+  @media (max-width: 800px) { .offices { padding: 0 22px 70px; } }
+  .office-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 30px; }
+  @media (max-width: 700px) { .office-grid { grid-template-columns: 1fr; } }
+  .office {
+    background: var(--bg-2); border: 1px solid var(--rule);
+    padding: 50px 40px; border-radius: 6px;
+    transition: border-color .3s, background .3s;
+    cursor: none;
+  }
+  .office:hover { border-color: var(--copper); background: var(--bg-3); }
+  .office-meta { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--copper); margin-bottom: 18px; }
+  .office-name { font-family: var(--serif); font-size: 56px; font-weight: 400; letter-spacing: -0.025em; line-height: 1; margin-bottom: 12px; }
+  .office-name em { font-style: italic; color: var(--copper); }
+  .office-addr { font-family: var(--serif); font-size: 19px; color: var(--ink-soft); margin-bottom: 26px; line-height: 1.4; }
+  .office-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; }
+  .office-row .lbl { color: var(--ink-mute); text-transform: uppercase; width: 80px; flex-shrink: 0; }
+  .office-row a { color: var(--ink); text-decoration: none; transition: color .25s; cursor: none; }
+  .office-row a:hover { color: var(--copper); }
+
+  .final-cta {
+    padding: 140px 40px;
+    text-align: center; position: relative; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(232, 125, 62, 0.2), transparent 55%),
+      radial-gradient(ellipse at 70% 70%, rgba(74, 157, 150, 0.14), transparent 55%);
+  }
+  @media (max-width: 800px) { .final-cta { padding: 80px 22px; } }
+  .final-cta-inner { position: relative; max-width: 980px; margin: 0 auto; }
+  .final-cta h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(48px, 7vw, 110px); line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 36px; }
+  .final-cta h2 em { font-style: italic; color: var(--copper); }
+  .final-cta p { font-family: var(--serif); font-size: 22px; color: var(--ink-soft); max-width: 660px; margin: 0 auto 48px; line-height: 1.5; }
+  .final-cta-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .final-cta-note { margin-top: 60px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); }
+
+  footer { background: var(--bg-2); padding: 80px 40px 30px; border-top: 1px solid var(--rule); }
+  @media (max-width: 800px) { footer { padding: 60px 22px 30px; } }
+  .foot-grid {
+    max-width: 1400px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 50px; padding-bottom: 50px;
+    border-bottom: 1px solid var(--rule);
+  }
+  @media (max-width: 800px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 30px; } }
+  .foot-mark { font-family: var(--serif); font-size: 36px; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .foot-mark em { color: var(--copper); font-style: italic; font-size: 26px; display: block; }
+  .foot-tag { font-family: var(--serif); font-size: 17px; line-height: 1.5; color: var(--ink-soft); max-width: 320px; }
+  .foot-h { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--copper); margin-bottom: 18px; }
+  .foot-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .foot-list a, .foot-list span { font-family: var(--serif); font-size: 16px; color: var(--ink); text-decoration: none; cursor: none; }
+  .foot-list a:hover { color: var(--copper); }
+  .foot-bottom {
+    max-width: 1400px; margin: 0 auto; padding-top: 24px;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .cinema-stage { height: 520vh; }
+    .panel-meta { font-size: 10px; letter-spacing: 0.14em; margin-bottom: 18px; }
+    .panel-title {
+      font-size: clamp(38px, 11vw, 64px);
+      line-height: 0.95;
+      max-width: 100%;
+    }
+    .panel-lede {
+      font-size: clamp(16px, 4.4vw, 19px);
+      line-height: 1.45;
+      max-width: 100%;
+      margin-top: 18px;
+    }
+    .panel-cta { margin-top: 26px; }
+    .btn-primary, .btn-ghost {
+      min-height: 48px;
+      padding: 14px 20px;
+      font-size: 10px;
+      letter-spacing: 0.11em;
+      justify-content: center;
+    }
+    .layer-caption {
+      min-width: 0;
+      width: calc(100% - 34px);
+      max-width: 520px;
+      bottom: 24px;
+      padding: 18px 16px;
+    }
+    .layer-caption .name { font-size: 25px; }
+    .layer-caption .desc { font-size: 14px; }
+    .marquee-track { font-size: 20px; gap: 30px; }
+    .marquee-track span { gap: 30px; }
+    .profile-name { font-size: 44px; }
+    .service { min-height: 280px; padding: 30px 22px; }
+    .service-name { font-size: 26px; }
+    .property { min-height: 280px; padding: 30px 20px; }
+    .property-stat { font-size: 54px; }
+    .office { padding: 34px 24px; }
+    .office-name { font-size: 44px; }
+    .compare-row .label { font-size: 20px; }
+    .compare-row .val { font-size: 17px; }
+    .final-cta h2 { font-size: clamp(42px, 11vw, 70px); }
+    .final-cta p { font-size: 18px; margin-bottom: 34px; }
+  }
+
+  @media (max-width: 560px) {
+    .cinema-stage { height: 500vh; }
+    .panel-inner { padding: 0 16px; }
+    .panel-title { font-size: clamp(34px, 10.8vw, 52px); }
+    .panel-lede { font-size: 15px; line-height: 1.4; }
+    .hud-corner.tl { top: 82px; left: 14px; }
+    .hud-corner.bl { bottom: 18px; left: 14px; }
+    .hud-corner .stage-num { font-size: 24px; margin-top: 5px; }
+    .btn-primary, .btn-ghost {
+      width: 100%;
+      padding: 14px 16px;
+      letter-spacing: 0.1em;
+    }
+    .panel-cta { gap: 10px; }
+    .section-head { padding: 72px 16px 30px; }
+    .profiles, .services, .science, .offices { padding-left: 16px; padding-right: 16px; }
+    .compare { padding-left: 16px; padding-right: 16px; }
+    .final-cta { padding-left: 16px; padding-right: 16px; }
+    footer { padding-left: 16px; padding-right: 16px; }
+    .foot-grid { grid-template-columns: 1fr; gap: 24px; }
+    .foot-bottom { gap: 8px; letter-spacing: 0.1em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="aurora"></div>
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
+
+<nav id="nav">
+  <div class="nav-mark">Sadabahar <em>UPVC.</em></div>
+  <div class="nav-links">
+    <a href="#profiles">Profiles</a>
+    <a href="#services">Services</a>
+    <a href="#science">Science</a>
+    <a href="#offices">Offices</a>
+    <a class="nav-cta" href="#contact">Get Quote →</a>
+  </div>
+</nav>
+
+<div class="cinema-stage" id="cinema">
+  <div class="cinema-sticky">
+    <canvas id="three-canvas"></canvas>
+    <div class="gif-sequence" aria-hidden="true">
+      <canvas id="frame-canvas" class="frame-canvas"></canvas>
+      <div class="gif-vignette"></div>
+    </div>
+
+    <div class="hud hud-corner tl">
+      <div><span class="strong">●</span> SADABAHAR UPVC</div>
+      <div class="stage-num" id="hudStageNum">Act I</div>
+    </div>
+    <div class="hud hud-corner tr">
+      <div id="hudCoord">COORD · 27.6772°N · 83.4596°E</div>
+      <div style="margin-top:4px">POKHARA · CHITWAN · NP</div>
+    </div>
+    <div class="hud hud-corner bl">
+      <div id="hudFocus">FOCUS · INFINITY</div>
+      <div style="margin-top:4px">SCROLL TO ZOOM IN ↓</div>
+    </div>
+    <div class="hud hud-corner br">
+      <div id="hudScale">SCALE · 1 : 100</div>
+      <div style="margin-top:4px">RENDER @ 60FPS</div>
+    </div>
+
+    <div class="scroll-panel" id="panel1">
+      <div class="panel-inner">
+        <div class="panel-meta">
+          <span class="pulse"></span>
+          <span>EST. 2016 · ISO 9001:2000 · 2,500+ PROJECTS</span>
+        </div>
+        <h1 class="panel-title">A house<br>built for <em>Nepal</em>.</h1>
+        <p class="panel-lede">Premium UPVC systems built for Nepal.</p>
+      </div>
+    </div>
+
+    <div class="scroll-panel" id="panel2">
+      <div class="panel-inner">
+        <div class="panel-meta">
+          <span class="pulse"></span>
+          <span>STAGE II · ZOOM</span>
+        </div>
+        <h1 class="panel-title">Look <em>closer</em>.<br>The window.</h1>
+        <p class="panel-lede">BD70 profile, our most requested system.</p>
+      </div>
+    </div>
+
+    <div class="scroll-panel" id="panel3">
+      <div class="panel-inner" style="padding-top: 40px;">
+        <div class="panel-meta">
+          <span class="pulse"></span>
+          <span>STAGE III · CROSS-SECTION</span>
+        </div>
+        <h1 class="panel-title" style="font-size: clamp(40px, 5vw, 72px);">Slice <em>through</em> it.</h1>
+        <p class="panel-lede">Engineered multi-chamber profile with precision-fit sealing.</p>
+      </div>
+    </div>
+
+    <div class="scroll-panel" id="panel4">
+      <div class="panel-inner" style="text-align:center;">
+        <div class="panel-meta" style="justify-content:center;">
+          <span class="pulse"></span>
+          <span>READY TO BUILD?</span>
+        </div>
+        <h1 class="panel-title" style="text-align:center; max-width:none;">This is what we <em>install</em>.</h1>
+        <p class="panel-lede" style="margin-left:auto; margin-right:auto;">Free measurement and fast quote across Pokhara and Chitwan.</p>
+        <div class="panel-cta" style="justify-content:center;">
+          <a class="btn-primary" href="tel:9860530189">Call 9860 530 189 →</a>
+          <a class="btn-ghost" href="https://wa.me/9779856069050" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer-caption" id="layerCaption">
+      <div class="num" id="layerCapNum">L01 / 07</div>
+      <div class="name" id="layerCapName">The <em>vinyl</em> body.</div>
+      <div class="desc" id="layerCapDesc">Lead-free PVC-U skin.</div>
+    </div>
+  </div>
+</div>
+
+<div class="stage-dots" id="stageDots">
+  <div class="stage-dot" data-target="0" data-label="House"></div>
+  <div class="stage-dot" data-target="0.22" data-label="Window"></div>
+  <div class="stage-dot" data-target="0.45" data-label="Cross-section"></div>
+  <div class="stage-dot" data-target="0.7" data-label="Layers"></div>
+  <div class="stage-dot" data-target="0.9" data-label="Build"></div>
+</div>
+
+<div class="progress-rail"><div class="progress-fill" id="progFill"></div></div>
+
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-track">
+    <span>Engineered for Pokhara <span class="sep">/</span> tested in Bharatpur <span class="sep">/</span> A-class fire rated <span class="sep">/</span> 30 dB sound insulation <span class="sep">/</span> 40-year service life <span class="sep">/</span> ISO 9001:2000 <span class="sep">/</span> imported from Henan <span class="sep">/</span></span>
+    <span>Engineered for Pokhara <span class="sep">/</span> tested in Bharatpur <span class="sep">/</span> A-class fire rated <span class="sep">/</span> 30 dB sound insulation <span class="sep">/</span> 40-year service life <span class="sep">/</span> ISO 9001:2000 <span class="sep">/</span> imported from Henan <span class="sep">/</span></span>
+  </div>
+</div>
+<div class="marquee-band" style="background: var(--bg); border-top: none;">
+  <div class="marquee-track reverse" style="font-style: normal; font-family: var(--mono); font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute);">
+    <span>BD60 · BD65 · BD70 · BD80 · BD88 · BD92 · CASEMENT · SLIDING · TILT-TURN · FIXED · ARCHED · BAY · </span>
+    <span>BD60 · BD65 · BD70 · BD80 · BD88 · BD92 · CASEMENT · SLIDING · TILT-TURN · FIXED · ARCHED · BAY · </span>
+  </div>
+</div>
+
+<!-- PROFILES -->
+<section id="profiles">
+  <div class="section-head">
+    <div class="section-num">§ 01 / Profiles</div>
+    <h2 class="section-title reveal">Six <em>Baydee</em> series.<br>One for every opening.</h2>
+  </div>
+  <div class="profiles">
+    <div class="profile-grid">
+      <div class="profile reveal">
+        <div class="profile-header"><span class="profile-series">SERIES 01</span><span class="profile-style">Casement</span></div>
+        <div class="profile-mini"><svg viewBox="0 0 80 80"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><rect x="14" y="14" width="52" height="52"/><line x1="40" y1="14" x2="40" y2="66"/><line x1="14" y1="40" x2="66" y2="40" opacity="0.4"/></g></svg></div>
+        <div class="profile-name">BD60</div>
+        <div class="profile-tag">The starter casement.</div>
+        <div class="profile-specs">
+          <div class="profile-spec-row"><span class="lbl">Width</span><span class="val">60 mm</span></div>
+          <div class="profile-spec-row"><span class="lbl">Glass</span><span class="val">4–24 mm</span></div>
+          <div class="profile-spec-row"><span class="lbl">Best for</span><span class="val">Bedrooms</span></div>
+        </div>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-header"><span class="profile-series">SERIES 02</span><span class="profile-style">Casement</span></div>
+        <div class="profile-mini"><svg viewBox="0 0 80 80"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><rect x="12" y="12" width="56" height="56"/><line x1="40" y1="12" x2="40" y2="68"/><rect x="20" y="20" width="40" height="40" opacity="0.4"/></g></svg></div>
+        <div class="profile-name">BD65</div>
+        <div class="profile-tag">Quiet, refined, residential.</div>
+        <div class="profile-specs">
+          <div class="profile-spec-row"><span class="lbl">Width</span><span class="val">65 mm</span></div>
+          <div class="profile-spec-row"><span class="lbl">Glass</span><span class="val">4–24 mm</span></div>
+          <div class="profile-spec-row"><span class="lbl">Best for</span><span class="val">Living rooms</span></div>
+        </div>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-header"><span class="profile-series">SERIES 03</span><span class="profile-style">Casement · flagship</span></div>
+        <div class="profile-mini"><svg viewBox="0 0 80 80"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><rect x="10" y="10" width="60" height="60"/><line x1="40" y1="10" x2="40" y2="70"/><rect x="18" y="18" width="44" height="44" opacity="0.5"/><rect x="24" y="24" width="32" height="32" opacity="0.3"/></g></svg></div>
+        <div class="profile-name">BD70</div>
+        <div class="profile-tag">Our flagship — the one we recommend.</div>
+        <div class="profile-specs">
+          <div class="profile-spec-row"><span class="lbl">Width</span><span class="val">70 × 75 mm</span></div>
+          <div class="profile-spec-row"><span class="lbl">Glass</span><span class="val">4.5–24.5 mm</span></div>
+          <div class="profile-spec-row"><span class="lbl">Best for</span><span class="val">Whole homes</span></div>
+        </div>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-header"><span class="profile-series">SERIES 04</span><span class="profile-style">Sliding</span></div>
+        <div class="profile-mini"><svg viewBox="0 0 80 80"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><rect x="10" y="20" width="60" height="40"/><rect x="14" y="24" width="26" height="32" opacity="0.6"/><rect x="40" y="24" width="26" height="32" opacity="0.4"/><line x1="40" y1="20" x2="40" y2="60" stroke-dasharray="2 2"/></g></svg></div>
+        <div class="profile-name">BD80</div>
+        <div class="profile-tag">Smooth-glide patio sliders.</div>
+        <div class="profile-specs">
+          <div class="profile-spec-row"><span class="lbl">Width</span><span class="val">80 mm</span></div>
+          <div class="profile-spec-row"><span class="lbl">Tracks</span><span class="val">2 / 3 / 4</span></div>
+          <div class="profile-spec-row"><span class="lbl">Best for</span><span class="val">Balconies</span></div>
+        </div>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-header"><span class="profile-series">SERIES 05</span><span class="profile-style">Sliding · heavy</span></div>
+        <div class="profile-mini"><svg viewBox="0 0 80 80"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><rect x="6" y="18" width="68" height="44"/><rect x="10" y="22" width="28" height="36" opacity="0.6"/><rect x="42" y="22" width="28" height="36" opacity="0.4"/><path d="M40 30 L46 40 L40 50" opacity="0.6"/></g></svg></div>
+        <div class="profile-name">BD88</div>
+        <div class="profile-tag">Wide-span, heavy-glass sliders.</div>
+        <div class="profile-specs">
+          <div class="profile-spec-row"><span class="lbl">Width</span><span class="val">88 mm</span></div>
+          <div class="profile-spec-row"><span class="lbl">Max sash</span><span class="val">2.4 m wide</span></div>
+          <div class="profile-spec-row"><span class="lbl">Best for</span><span class="val">Open plans</span></div>
+        </div>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-header"><span class="profile-series">SERIES 06</span><span class="profile-style">Casement · premium</span></div>
+        <div class="profile-mini"><svg viewBox="0 0 80 80"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><rect x="8" y="8" width="64" height="64"/><line x1="40" y1="8" x2="40" y2="72"/><rect x="14" y="14" width="52" height="52" opacity="0.5"/><rect x="20" y="20" width="40" height="40" opacity="0.35"/><rect x="26" y="26" width="28" height="28" opacity="0.2"/></g></svg></div>
+        <div class="profile-name">BD92</div>
+        <div class="profile-tag">Passive-house grade. Maximum chambers.</div>
+        <div class="profile-specs">
+          <div class="profile-spec-row"><span class="lbl">Width</span><span class="val">92 mm</span></div>
+          <div class="profile-spec-row"><span class="lbl">Chambers</span><span class="val">6+</span></div>
+          <div class="profile-spec-row"><span class="lbl">Best for</span><span class="val">Mountain homes</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-head">
+    <div class="section-num">§ 02 / Services</div>
+    <h2 class="section-title reveal">Six things we <em>build</em>.<br>All under one roof.</h2>
+  </div>
+  <div class="services">
+    <div class="service-grid">
+      <div class="service reveal" data-tilt><div class="service-num">01</div><div class="service-icon"><svg viewBox="0 0 56 56"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><rect x="6" y="6" width="44" height="44"/><line x1="28" y1="6" x2="28" y2="50"/><line x1="6" y1="28" x2="50" y2="28"/></g></svg></div><h3 class="service-name">UPVC <em>Windows</em> &amp; Doors</h3><p class="service-desc">Energy-efficient, soundproof, weather-resistant — for homes and offices. 20-year guarantee, German hardware.</p><div class="service-tags"><span class="service-tag">Energy efficient</span><span class="service-tag">Soundproof</span><span class="service-tag">20-yr warranty</span></div></div>
+      <div class="service reveal" data-tilt><div class="service-num">02</div><div class="service-icon"><svg viewBox="0 0 56 56"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><rect x="6" y="10" width="14" height="36"/><rect x="22" y="10" width="14" height="36"/><rect x="38" y="10" width="14" height="36"/></g></svg></div><h3 class="service-name">UPVC <em>Partitions</em></h3><p class="service-desc">Modern partitions for offices, hotels and homes. Custom dimensions, easy install, low maintenance.</p><div class="service-tags"><span class="service-tag">Modern</span><span class="service-tag">Custom sizes</span><span class="service-tag">Easy install</span></div></div>
+      <div class="service reveal" data-tilt><div class="service-num">03</div><div class="service-icon"><svg viewBox="0 0 56 56"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><line x1="6" y1="50" x2="50" y2="50"/><line x1="14" y1="50" x2="14" y2="6"/><line x1="22" y1="50" x2="22" y2="6"/><line x1="30" y1="50" x2="30" y2="6"/><line x1="38" y1="50" x2="38" y2="6"/><line x1="14" y1="6" x2="38" y2="6"/><path d="M14 16 L38 16 M14 26 L38 26 M14 36 L38 36"/></g></svg></div><h3 class="service-name">Metal <em>Fabrication</em></h3><p class="service-desc">Gates, grills, railings, industrial structures. Precision metalwork, rust-resistant finishes.</p><div class="service-tags"><span class="service-tag">Custom</span><span class="service-tag">Industrial grade</span><span class="service-tag">Rust resistant</span></div></div>
+      <div class="service reveal" data-tilt><div class="service-num">04</div><div class="service-icon"><svg viewBox="0 0 56 56"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><path d="M4 24 L28 8 L52 24"/><line x1="10" y1="24" x2="10" y2="48"/><line x1="46" y1="24" x2="46" y2="48"/><line x1="4" y1="48" x2="52" y2="48"/></g></svg></div><h3 class="service-name">Parking <em>Sheds</em> &amp; Roofing</h3><p class="service-desc">Weatherproof car sheds and roofing. UV-protected, durable materials, fast install.</p><div class="service-tags"><span class="service-tag">Weatherproof</span><span class="service-tag">UV protected</span><span class="service-tag">Quick install</span></div></div>
+      <div class="service reveal" data-tilt><div class="service-num">05</div><div class="service-icon"><svg viewBox="0 0 56 56"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><line x1="6" y1="14" x2="50" y2="14"/><line x1="6" y1="22" x2="50" y2="22" opacity="0.6"/><line x1="14" y1="30" x2="42" y2="30" opacity="0.4"/><line x1="20" y1="38" x2="36" y2="38" opacity="0.3"/></g></svg></div><h3 class="service-name">False <em>Ceilings</em></h3><p class="service-desc">Decorative, energy-saving ceilings. Fire-resistant, easy maintenance, modern aesthetic.</p><div class="service-tags"><span class="service-tag">Decorative</span><span class="service-tag">Fire resistant</span><span class="service-tag">Energy saving</span></div></div>
+      <div class="service reveal" data-tilt><div class="service-num">06</div><div class="service-icon"><svg viewBox="0 0 56 56"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><circle cx="28" cy="20" r="8"/><path d="M14 46 Q28 30 42 46"/><line x1="6" y1="50" x2="50" y2="50"/></g></svg></div><h3 class="service-name">Consultancy &amp; <em>Manpower</em></h3><p class="service-desc">End-to-end project support. Skilled labour, project management, quality assurance.</p><div class="service-tags"><span class="service-tag">Expert advice</span><span class="service-tag">Skilled labour</span><span class="service-tag">Full support</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="science">
+  <div class="section-head">
+    <div class="section-num">§ 03 / Science</div>
+    <h2 class="section-title reveal">Why <em>40 years</em> isn't<br>a marketing number.</h2>
+  </div>
+  <div class="science">
+    <div class="science-grid">
+      <div class="property reveal"><div><div class="property-icon"><svg viewBox="0 0 60 60"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><path d="M8 30 Q14 20 20 30 T32 30 T44 30 T56 30"/><path d="M8 38 Q14 28 20 38 T32 38 T44 38 T56 38" opacity="0.5"/><path d="M8 22 Q14 12 20 22 T32 22 T44 22 T56 22" opacity="0.3"/></g></svg></div><div class="property-stat">30+<span class="unit"> dB</span></div><div class="property-name">Sound reduction</div></div><p class="property-desc">A 70 dB busy street outside becomes the hush of a library inside.</p></div>
+      <div class="property reveal"><div><div class="property-icon"><svg viewBox="0 0 60 60"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><path d="M30 8 Q22 18 22 28 Q22 40 30 50 Q38 40 38 28 Q38 18 30 8 Z"/><path d="M30 14 Q26 22 26 28 Q26 36 30 42" opacity="0.5"/></g></svg></div><div class="property-stat">A<span class="unit"> class</span></div><div class="property-name">Fire resistance</div></div><p class="property-desc">Self-extinguishing PVC. A-class rating for residential and commercial fire codes.</p></div>
+      <div class="property reveal"><div><div class="property-icon"><svg viewBox="0 0 60 60"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><circle cx="30" cy="30" r="8"/><line x1="30" y1="6" x2="30" y2="14"/><line x1="30" y1="46" x2="30" y2="54"/><line x1="6" y1="30" x2="14" y2="30"/><line x1="46" y1="30" x2="54" y2="30"/><line x1="13" y1="13" x2="19" y2="19"/><line x1="41" y1="41" x2="47" y2="47"/><line x1="13" y1="47" x2="19" y2="41"/><line x1="41" y1="19" x2="47" y2="13"/></g></svg></div><div class="property-stat">35<span class="unit">%</span></div><div class="property-name">Energy savings</div></div><p class="property-desc">Five-chamber thermal break + double glazing. Your AC works less, your bill drops a third.</p></div>
+      <div class="property reveal"><div><div class="property-icon"><svg viewBox="0 0 60 60"><g fill="none" stroke="#e87d3e" stroke-width="1.5"><rect x="14" y="14" width="32" height="32"/><line x1="14" y1="22" x2="46" y2="22"/><line x1="14" y1="30" x2="46" y2="30"/><line x1="14" y1="38" x2="46" y2="38"/><line x1="22" y1="14" x2="22" y2="46"/><line x1="30" y1="14" x2="30" y2="46"/><line x1="38" y1="14" x2="38" y2="46"/></g></svg></div><div class="property-stat">40+<span class="unit"> yrs</span></div><div class="property-name">Service life</div></div><p class="property-desc">UV stabilisers + galvanised steel + EPDM. No warp, no rust, no rot.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare" class="compare">
+  <div class="compare-inner">
+    <div class="section-head" style="padding: 0 0 40px 0;">
+      <div class="section-num">§ 04 / Compare</div>
+      <h2 class="section-title reveal">Three materials, <em>one</em> honest table.</h2>
+    </div>
+    <div class="compare-table">
+      <div class="compare-row head"><div class="label">Property</div><div class="upvc">Sadabahar UPVC</div><div>Aluminium</div><div>Wood</div></div>
+      <div class="compare-row"><div class="label">Lifespan <em>before replacement</em></div><div class="val win">40+ years</div><div class="val">15–20 years</div><div class="val">10–15 years</div></div>
+      <div class="compare-row"><div class="label">Sound insulation <em>at 1 m</em></div><div class="val win">30–35 dB</div><div class="val">22 dB</div><div class="val">25 dB</div></div>
+      <div class="compare-row"><div class="label">Maintenance <em>annual</em></div><div class="val win">Wipe with cloth</div><div class="val">Re-painting</div><div class="val">Polish &amp; varnish</div></div>
+      <div class="compare-row"><div class="label">Termite &amp; rot <em>resistance</em></div><div class="val win">Immune</div><div class="val">Immune</div><div class="val">Vulnerable</div></div>
+      <div class="compare-row"><div class="label">Heat conductivity <em>lower is better</em></div><div class="val win">0.17 W/mK</div><div class="val">160 W/mK</div><div class="val">0.14 W/mK</div></div>
+      <div class="compare-row"><div class="label">Cost over <em>20 years</em></div><div class="val win">Lowest</div><div class="val">Medium</div><div class="val">Highest</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="offices">
+  <div class="section-head">
+    <div class="section-num">§ 05 / Offices</div>
+    <h2 class="section-title reveal">Two yards, <em>one</em> standard.</h2>
+  </div>
+  <div class="offices">
+    <div class="office-grid">
+      <div class="office reveal" data-tilt>
+        <div class="office-meta">HEADQUARTERS · POKHARA</div>
+        <div class="office-name"><em>Pokhara</em>.</div>
+        <p class="office-addr">Pokhara-5<br>Malepatan, Shantimarga</p>
+        <div class="office-row"><span class="lbl">Land</span><a href="tel:061584604">061-584604</a></div>
+        <div class="office-row"><span class="lbl">Mobile</span><a href="tel:9856069050">9856 069 050</a></div>
+        <div class="office-row"><span class="lbl">Hours</span><span style="color: var(--ink-soft)">Mon–Sat · 9 AM – 6 PM</span></div>
+      </div>
+      <div class="office reveal" data-tilt>
+        <div class="office-meta">BRANCH · CHITWAN</div>
+        <div class="office-name"><em>Chitwan</em>.</div>
+        <p class="office-addr">Bharatpur-9<br>Hakimchowk</p>
+        <div class="office-row"><span class="lbl">Land</span><a href="tel:056490800">056-490800</a></div>
+        <div class="office-row"><span class="lbl">Mobile</span><a href="tel:9860530189">9860 530 189</a></div>
+        <div class="office-row"><span class="lbl">Hours</span><span style="color: var(--ink-soft)">Mon–Sat · 9 AM – 6 PM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="final-cta">
+  <div class="final-cta-inner">
+    <h2>Tell us the room.<br>We'll send <em>the drawing.</em></h2>
+    <p>Free consultation, on-site measurement, and a detailed quote in 48 hours. Available across Pokhara, Chitwan, and most of central Nepal.</p>
+    <div class="final-cta-buttons">
+      <a class="btn-primary" href="tel:9860530189"><span>Call 9860 530 189 →</span></a>
+      <a class="btn-ghost" href="https://wa.me/9779856069050" target="_blank"><span>WhatsApp</span></a>
+    </div>
+    <div class="final-cta-note">RESPONSE WITHIN 1 BUSINESS DAY · MON–SAT · 9 AM – 6 PM</div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-mark">Sadabahar <em>UPVC.</em></div>
+      <p class="foot-tag">Premium UPVC and metal solutions, imported from Baydee in Henan and finished in Nepal. ISO 9001:2000 · 20-year guarantee · since 2016.</p>
+    </div>
+    <div>
+      <div class="foot-h">Explore</div>
+      <ul class="foot-list">
+        <li><a href="#profiles">Profiles</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#science">Science</a></li>
+        <li><a href="#offices">Offices</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Pokhara HQ</div>
+      <ul class="foot-list">
+        <li><span>Malepatan, Shantimarga<br>Pokhara-5</span></li>
+        <li><a href="tel:061584604">061-584604</a></li>
+        <li><a href="tel:9856069050">98560 69050</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Chitwan</div>
+      <ul class="foot-list">
+        <li><span>Hakimchowk<br>Bharatpur-9</span></li>
+        <li><a href="tel:056490800">056-490800</a></li>
+        <li><a href="tel:9860530189">98605 30189</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Sadabahar UPVC Udhyog &amp; Suppliers Pvt. Ltd.</span>
+    <span>EST. 2016 · ISO 9001:2000 · 20-YR GUARANTEE</span>
+  </div>
+</footer>
+
+<script>
+  /* ─── Shared interaction (cursor, reveal, tilt, nav) ─── */
+  const nav = document.getElementById('nav');
+  function updateNavState() {
+    const y = window.scrollY || window.pageYOffset || 0;
+    const visible = Math.max(0.04, Math.min(1, y / 120));
+    nav.classList.toggle('scrolled', y > 24);
+    nav.style.opacity = visible.toFixed(3);
+  }
+  updateNavState();
+  window.addEventListener('scroll', updateNavState, { passive: true });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  let mx = window.innerWidth/2, my = window.innerHeight/2;
+  let rx = mx, ry = my, dx = mx, dy = my;
+  window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+  function tickCursor() {
+    dx += (mx-dx)*0.85; dy += (my-dy)*0.85;
+    rx += (mx-rx)*0.16; ry += (my-ry)*0.16;
+    if (dot) dot.style.transform = `translate(${dx}px, ${dy}px) translate(-50%, -50%)`;
+    if (ring) ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+    requestAnimationFrame(tickCursor);
+  }
+  if (window.innerWidth > 900) tickCursor();
+  document.querySelectorAll('a, button, [data-tilt], .profile, .property, .office, .stage-dot, #three-canvas').forEach(el => {
+    el.addEventListener('mouseenter', () => ring && ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring && ring.classList.remove('hover'));
+  });
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX-r.left)/r.width, y = (e.clientY-r.top)/r.height;
+      card.style.transform = `perspective(1000px) rotateX(${(y-0.5)*-8}deg) rotateY(${(x-0.5)*8}deg)`;
+      card.style.setProperty('--mx', `${x*100}%`);
+      card.style.setProperty('--my', `${y*100}%`);
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform=''; });
+  });
+
+  /* ════════════════════════════════════════════════════════════════ */
+  /* ★ THREE.JS — REAL UPVC PROFILE GEOMETRY (chambered extrusions) ★ */
+  /* ════════════════════════════════════════════════════════════════ */
+  (function init3D() {
+    const canvas = document.getElementById('three-canvas');
+    if (!canvas || typeof THREE === 'undefined') return;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setClearColor(0x0a0e14, 1);
+
+    function getSize() { return { w: window.innerWidth, h: window.innerHeight }; }
+    let { w, h } = getSize();
+    renderer.setSize(w, h, false);
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x0a0e14, 30, 140);
+
+    const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 500);
+    camera.position.set(0, 8, 50);
+
+    /* ─── LIGHTING ─── */
+    scene.add(new THREE.AmbientLight(0x4a5878, 0.4));
+    const sun = new THREE.DirectionalLight(0xffeacc, 1.2);
+    sun.position.set(15, 30, 20);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(2048, 2048);
+    sun.shadow.camera.near = 0.5;
+    sun.shadow.camera.far = 100;
+    sun.shadow.camera.left = -40;
+    sun.shadow.camera.right = 40;
+    sun.shadow.camera.top = 40;
+    sun.shadow.camera.bottom = -40;
+    scene.add(sun);
+
+    const rim = new THREE.DirectionalLight(0xe87d3e, 0.6);
+    rim.position.set(-20, 8, -10);
+    scene.add(rim);
+
+    const fill = new THREE.DirectionalLight(0x4a9d96, 0.35);
+    fill.position.set(0, -5, 15);
+    scene.add(fill);
+
+    /* ─── GROUND + GRID ─── */
+    const ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(200, 200),
+      new THREE.MeshStandardMaterial({ color: 0x141a26, roughness: 0.95 })
+    );
+    ground.rotation.x = -Math.PI/2;
+    ground.position.y = -0.01;
+    ground.receiveShadow = true;
+    scene.add(ground);
+    scene.add(new THREE.GridHelper(200, 80, 0x1f2a3d, 0x1f2a3d));
+
+    /* ════════════════════════════════ */
+    /* HOUSE                              */
+    /* ════════════════════════════════ */
+    const houseGroup = new THREE.Group();
+
+    const wallMat = new THREE.MeshStandardMaterial({ color: 0xc9bfa8, roughness: 0.85 });
+    const accentWallMat = new THREE.MeshStandardMaterial({ color: 0xa89a7e, roughness: 0.85 });
+    const roofMat = new THREE.MeshStandardMaterial({ color: 0x4a3a2e, roughness: 0.7 });
+    const woodMat = new THREE.MeshStandardMaterial({ color: 0x8b5a3c, roughness: 0.75 });
+    const buildingFrameMat = new THREE.MeshStandardMaterial({ color: 0xf5f1e8, roughness: 0.4, metalness: 0.05 });
+    const buildingGlassMat = new THREE.MeshPhysicalMaterial({
+      color: 0xa8d4cf, roughness: 0.05, metalness: 0,
+      transmission: 0.85, transparent: true, opacity: 0.55,
+      thickness: 0.3
+    });
+
+    const HOUSE_W = 16, HOUSE_H = 8, HOUSE_D = 10;
+    const houseBody = new THREE.Mesh(new THREE.BoxGeometry(HOUSE_W, HOUSE_H, HOUSE_D), wallMat);
+    houseBody.position.y = HOUSE_H/2;
+    houseBody.castShadow = true; houseBody.receiveShadow = true;
+    houseGroup.add(houseBody);
+
+    const floor2 = new THREE.Mesh(new THREE.BoxGeometry(HOUSE_W * 0.85, HOUSE_H * 0.7, HOUSE_D * 0.85), accentWallMat);
+    floor2.position.y = HOUSE_H + (HOUSE_H * 0.7) / 2;
+    floor2.castShadow = true; floor2.receiveShadow = true;
+    houseGroup.add(floor2);
+
+    const roof = new THREE.Mesh(new THREE.ConeGeometry(HOUSE_W * 0.65, 4, 4), roofMat);
+    roof.position.y = HOUSE_H + (HOUSE_H * 0.7) + 2;
+    roof.rotation.y = Math.PI/4;
+    roof.castShadow = true;
+    houseGroup.add(roof);
+
+    const door = new THREE.Mesh(new THREE.BoxGeometry(1.4, 3, 0.15), woodMat);
+    door.position.set(0, 1.5, HOUSE_D/2 + 0.08);
+    door.castShadow = true;
+    houseGroup.add(door);
+
+    function makeBuildingWindow(x, y, w=2, h=2.4) {
+      const grp = new THREE.Group();
+      const fT = 0.16;
+      const top = new THREE.Mesh(new THREE.BoxGeometry(w, fT, 0.3), buildingFrameMat); top.position.y = h/2 - fT/2;
+      const bot = new THREE.Mesh(new THREE.BoxGeometry(w, fT, 0.3), buildingFrameMat); bot.position.y = -h/2 + fT/2;
+      const left = new THREE.Mesh(new THREE.BoxGeometry(fT, h - fT*2, 0.3), buildingFrameMat); left.position.x = -w/2 + fT/2;
+      const right = new THREE.Mesh(new THREE.BoxGeometry(fT, h - fT*2, 0.3), buildingFrameMat); right.position.x = w/2 - fT/2;
+      const mull = new THREE.Mesh(new THREE.BoxGeometry(0.08, h - fT*2, 0.3), buildingFrameMat);
+      [top, bot, left, right, mull].forEach(m => { m.castShadow = true; grp.add(m); });
+      const glass = new THREE.Mesh(new THREE.BoxGeometry(w - fT*2.2, h - fT*2.2, 0.05), buildingGlassMat);
+      glass.position.z = 0.05; grp.add(glass);
+      grp.position.set(x, y, HOUSE_D/2 + 0.05);
+      return grp;
+    }
+    houseGroup.add(makeBuildingWindow(-5.5, 4.5, 2, 2.4)); // HERO
+    houseGroup.add(makeBuildingWindow(-2, 4.5));
+    houseGroup.add(makeBuildingWindow(2, 4.5));
+    houseGroup.add(makeBuildingWindow(5.5, 4.5));
+    houseGroup.add(makeBuildingWindow(-4.5, 11, 1.8, 2));
+    houseGroup.add(makeBuildingWindow(-1.5, 11, 1.8, 2));
+    houseGroup.add(makeBuildingWindow(1.5, 11, 1.8, 2));
+    houseGroup.add(makeBuildingWindow(4.5, 11, 1.8, 2));
+
+    function makeTree(x, z) {
+      const grp = new THREE.Group();
+      const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.2, 1.5, 8), new THREE.MeshStandardMaterial({ color: 0x3a2820, roughness: 0.9 }));
+      trunk.position.y = 0.75; trunk.castShadow = true; grp.add(trunk);
+      const foliage = new THREE.Mesh(new THREE.ConeGeometry(1.2, 3, 8), new THREE.MeshStandardMaterial({ color: 0x2d4a3a, roughness: 0.9 }));
+      foliage.position.y = 2.5; foliage.castShadow = true; grp.add(foliage);
+      grp.position.set(x, 0, z);
+      return grp;
+    }
+    scene.add(makeTree(-12, 6));
+    scene.add(makeTree(13, 4));
+    scene.add(makeTree(-15, -3));
+    scene.add(makeTree(12, -5));
+
+    scene.add(houseGroup);
+
+    /* ════════════════════════════════════════════════════════════════ */
+    /* ★ REAL UPVC PROFILE GEOMETRY                                     ★ */
+    /* Each profile is a 2D cross-section SHAPE extruded along an axis  */
+    /* mimicking the actual Baydee photographs                          */
+    /* ════════════════════════════════════════════════════════════════ */
+
+    // PVC material (the cream off-white from the photos)
+    const pvcMat = new THREE.MeshStandardMaterial({
+      color: 0xf5f1e8, roughness: 0.55, metalness: 0.05,
+      side: THREE.DoubleSide
+    });
+    const pvcMatSash = new THREE.MeshStandardMaterial({
+      color: 0xede6d4, roughness: 0.5, metalness: 0.05,
+      side: THREE.DoubleSide
+    });
+    const detailedGlass = new THREE.MeshPhysicalMaterial({
+      color: 0xa8d4cf, roughness: 0.05, metalness: 0,
+      transmission: 0.88, transparent: true, opacity: 0.45,
+      thickness: 0.3
+    });
+    const steelMat = new THREE.MeshStandardMaterial({
+      color: 0x6b7280, roughness: 0.35, metalness: 0.85
+    });
+    const gasketMat = new THREE.MeshStandardMaterial({
+      color: 0x1a1a1a, roughness: 0.95, metalness: 0
+    });
+    const goldMat = new THREE.MeshStandardMaterial({
+      color: 0xd4a574, roughness: 0.25, metalness: 0.85
+    });
+
+    /* ───── PROFILE CROSS-SECTION BUILDERS ─────
+       Each function returns a THREE.Shape (with optional holes) that represents
+       the cross-section of a UPVC profile, viewed end-on.
+       Coordinates: profile is built in XY plane, extruded along Z.
+       Real Baydee BD70: 70mm wide × 75mm deep, 2.5–2.8mm wall thickness
+       Scale: 1 unit ≈ 10mm, so 70mm = 7 units */
+
+    // Outer FRAME profile (the part that bolts to the wall)
+    // Looking at the photo: it's L-shaped with a stepped rebate where the sash sits,
+    // multi-chambered inside, with gasket grooves on the outer edge.
+    function makeFrameProfileShape() {
+      const s = new THREE.Shape();
+      // Width: 7 units (70mm), Height: 7.5 units (75mm)
+      // Outer rectangle starts at (0,0), goes to (7, 7.5)
+      // Has a step on top-right where the sash rebate is
+
+      // Trace outer boundary clockwise starting from bottom-left
+      s.moveTo(0, 0);
+      s.lineTo(7, 0);          // bottom
+      s.lineTo(7, 4);          // right side up to rebate
+      s.lineTo(4.5, 4);        // step in for sash rebate
+      s.lineTo(4.5, 6.5);      // up the rebate
+      s.lineTo(3.2, 6.5);      // small lip
+      s.lineTo(3.2, 7.5);      // up to top
+      s.lineTo(0, 7.5);        // top to left
+      s.lineTo(0, 0);          // close
+
+      // Internal chambers (as holes)
+      // Chamber 1 (bottom-left)
+      const c1 = new THREE.Path();
+      c1.moveTo(0.4, 0.4); c1.lineTo(1.8, 0.4); c1.lineTo(1.8, 3.6); c1.lineTo(0.4, 3.6); c1.lineTo(0.4, 0.4);
+      s.holes.push(c1);
+
+      // Chamber 2 (bottom-right) — central where steel core lives
+      const c2 = new THREE.Path();
+      c2.moveTo(2.2, 0.4); c2.lineTo(6.6, 0.4); c2.lineTo(6.6, 3.6); c2.lineTo(2.2, 3.6); c2.lineTo(2.2, 0.4);
+      s.holes.push(c2);
+
+      // Chamber 3 (top-left, smaller)
+      const c3 = new THREE.Path();
+      c3.moveTo(0.4, 4.0); c3.lineTo(2.8, 4.0); c3.lineTo(2.8, 6.0); c3.lineTo(0.4, 6.0); c3.lineTo(0.4, 4.0);
+      s.holes.push(c3);
+
+      // Chamber 4 (top above the rebate step)
+      const c4 = new THREE.Path();
+      c4.moveTo(0.4, 6.4); c4.lineTo(2.8, 6.4); c4.lineTo(2.8, 7.1); c4.lineTo(0.4, 7.1); c4.lineTo(0.4, 6.4);
+      s.holes.push(c4);
+
+      // Chamber 5 (small one in rebate area)
+      const c5 = new THREE.Path();
+      c5.moveTo(3.6, 4.4); c5.lineTo(4.1, 4.4); c5.lineTo(4.1, 6.1); c5.lineTo(3.6, 6.1); c5.lineTo(3.6, 4.4);
+      s.holes.push(c5);
+
+      return s;
+    }
+
+    // Sash profile — sits inside the frame's rebate, holds the glass
+    function makeSashProfileShape() {
+      const s = new THREE.Shape();
+      // Sash is roughly 5.5 wide × 7 tall, with a glazing rebate on one side
+      s.moveTo(0, 0);
+      s.lineTo(5.5, 0);         // bottom
+      s.lineTo(5.5, 4);         // right side
+      s.lineTo(3.5, 4);         // step in for glazing rebate
+      s.lineTo(3.5, 6);         // up
+      s.lineTo(2.5, 6);         // small lip
+      s.lineTo(2.5, 7);         // top of glazing area
+      s.lineTo(0, 7);           // top
+      s.lineTo(0, 0);           // close
+
+      // Chambers
+      const c1 = new THREE.Path();
+      c1.moveTo(0.4, 0.4); c1.lineTo(1.6, 0.4); c1.lineTo(1.6, 3.6); c1.lineTo(0.4, 3.6); c1.lineTo(0.4, 0.4);
+      s.holes.push(c1);
+
+      const c2 = new THREE.Path();
+      c2.moveTo(2.0, 0.4); c2.lineTo(5.1, 0.4); c2.lineTo(5.1, 3.6); c2.lineTo(2.0, 3.6); c2.lineTo(2.0, 0.4);
+      s.holes.push(c2);
+
+      const c3 = new THREE.Path();
+      c3.moveTo(0.4, 4.0); c3.lineTo(2.1, 4.0); c3.lineTo(2.1, 6.6); c3.lineTo(0.4, 6.6); c3.lineTo(0.4, 4.0);
+      s.holes.push(c3);
+
+      const c4 = new THREE.Path();
+      c4.moveTo(2.9, 4.4); c4.lineTo(3.1, 4.4); c4.lineTo(3.1, 5.6); c4.lineTo(2.9, 5.6); c4.lineTo(2.9, 4.4);
+      s.holes.push(c4);
+
+      return s;
+    }
+
+    /* ───── BUILD ONE LENGTH OF PROFILE ─────
+       Takes a 2D shape and extrudes it along its length.
+       Returns a Group with the PVC body, a steel core inside, and gasket lines */
+    function buildProfileLength(shapeFunc, length, options = {}) {
+      const grp = new THREE.Group();
+      const shape = shapeFunc();
+
+      const extrudeSettings = {
+        depth: length,
+        bevelEnabled: true,
+        bevelSize: 0.04,
+        bevelThickness: 0.04,
+        bevelSegments: 2,
+        steps: 1
+      };
+
+      const geom = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+      geom.translate(0, 0, -length / 2);
+      const mat = options.sash ? pvcMatSash : pvcMat;
+      const mesh = new THREE.Mesh(geom, mat);
+      mesh.castShadow = true;
+      mesh.receiveShadow = true;
+      grp.add(mesh);
+      grp.userData.profileMesh = mesh;
+
+      // Add steel core (a thin metal channel inside the largest chamber)
+      if (!options.noSteel) {
+        const steelGeom = new THREE.BoxGeometry(3.6, 2.6, length - 0.6);
+        const steel = new THREE.Mesh(steelGeom, steelMat);
+        // Position steel inside the central chamber (chamber 2 of frame)
+        steel.position.set(options.sash ? 3.3 : 4.4, 2.0, 0);
+        steel.castShadow = true;
+        grp.add(steel);
+        grp.userData.steel = steel;
+      }
+
+      // Add gasket bead (small black rubber strip on the rebate edge)
+      if (!options.noGasket) {
+        const gasketGeom = new THREE.BoxGeometry(0.15, 0.4, length - 0.4);
+        const g1 = new THREE.Mesh(gasketGeom, gasketMat);
+        g1.position.set(options.sash ? 3.5 : 4.5, options.sash ? 6.2 : 6.3, 0);
+        grp.add(g1);
+        grp.userData.gasket = g1;
+      }
+
+      return grp;
+    }
+
+    /* ════════════════════════════════════════════════════════════════ */
+    /* ASSEMBLE THE FULL WINDOW from real chambered profiles            */
+    /* The window has 4 frame sides + 2 sashes + glass + handles        */
+    /* ════════════════════════════════════════════════════════════════ */
+
+    const heroWindowGroup = new THREE.Group();
+    const HERO_X = -5.5, HERO_Y = 4.5, HERO_Z = 5.05;
+    heroWindowGroup.position.set(HERO_X, HERO_Y, HERO_Z + 1);
+    heroWindowGroup.scale.setScalar(0.5); // overall size scale
+    heroWindowGroup.visible = false;
+    scene.add(heroWindowGroup);
+
+    // Window dimensions (in profile units): 14 wide × 16 tall
+    const W_W = 14, W_H = 16;
+
+    // === FRAME — 4 sides, each is a profile extruded along its length ===
+    // We want each profile's local origin (0,0) to be at outside-bottom-left of cross-section.
+    // For the outer frame, the cross-section above is 7 wide × 7.5 tall.
+
+    // BOTTOM frame side (extruded along X, length = W_W)
+    const frameBottom = buildProfileLength(makeFrameProfileShape, W_W);
+    // Rotate so cross-section faces +Z, length runs along X
+    frameBottom.rotation.y = Math.PI / 2;
+    // Place at bottom of window
+    frameBottom.position.set(-W_W/2, 0, 0);
+    frameBottom.userData.layerId = 1;
+    frameBottom.userData.partType = 'frame-bottom';
+    heroWindowGroup.add(frameBottom);
+
+    // TOP frame side — flipped vertically so the rebate faces inward (downward)
+    const frameTop = buildProfileLength(makeFrameProfileShape, W_W);
+    frameTop.rotation.y = Math.PI / 2;
+    frameTop.rotation.x = Math.PI; // flip
+    frameTop.position.set(-W_W/2, W_H, 0);
+    frameTop.userData.layerId = 1;
+    frameTop.userData.partType = 'frame-top';
+    heroWindowGroup.add(frameTop);
+
+    // LEFT frame side — extruded along Y, mitre-cut at corners
+    const frameLeft = buildProfileLength(makeFrameProfileShape, W_H);
+    // Rotate so length runs along Y
+    frameLeft.rotation.z = -Math.PI / 2;
+    frameLeft.rotation.y = Math.PI / 2;
+    frameLeft.position.set(-W_W/2, W_H, 0);
+    frameLeft.userData.layerId = 1;
+    frameLeft.userData.partType = 'frame-left';
+    heroWindowGroup.add(frameLeft);
+
+    // RIGHT frame side
+    const frameRight = buildProfileLength(makeFrameProfileShape, W_H);
+    frameRight.rotation.z = -Math.PI / 2;
+    frameRight.rotation.y = Math.PI / 2;
+    frameRight.rotation.x = Math.PI; // flip so rebate faces in
+    frameRight.position.set(W_W/2, W_H, 0);
+    frameRight.userData.layerId = 1;
+    frameRight.userData.partType = 'frame-right';
+    heroWindowGroup.add(frameRight);
+
+    // === MULLION (vertical centre divider) — same profile shape, in the middle ===
+    const mullion = buildProfileLength(makeFrameProfileShape, W_H - 1.5);
+    mullion.rotation.z = -Math.PI / 2;
+    mullion.rotation.y = Math.PI / 2;
+    mullion.position.set(-1.75, W_H - 0.75, 0);
+    mullion.scale.x = 0.5; // half-width since mullion is narrower
+    mullion.userData.layerId = 1;
+    mullion.userData.partType = 'mullion';
+    heroWindowGroup.add(mullion);
+
+    // === SASH (left + right) — slightly inset, holds glass ===
+    function buildSash(width, height) {
+      const sashGroup = new THREE.Group();
+      // 4 sides of the sash, each made from sash profile
+      const sashBottom = buildProfileLength(makeSashProfileShape, width, { sash: true, noSteel: true, noGasket: true });
+      sashBottom.rotation.y = Math.PI / 2;
+      sashBottom.position.set(-width/2, 0, 0);
+      sashGroup.add(sashBottom);
+
+      const sashTop = buildProfileLength(makeSashProfileShape, width, { sash: true, noSteel: true, noGasket: true });
+      sashTop.rotation.y = Math.PI / 2;
+      sashTop.rotation.x = Math.PI;
+      sashTop.position.set(-width/2, height, 0);
+      sashGroup.add(sashTop);
+
+      const sashLeft = buildProfileLength(makeSashProfileShape, height, { sash: true, noSteel: true, noGasket: true });
+      sashLeft.rotation.z = -Math.PI / 2;
+      sashLeft.rotation.y = Math.PI / 2;
+      sashLeft.position.set(-width/2, height, 0);
+      sashGroup.add(sashLeft);
+
+      const sashRight = buildProfileLength(makeSashProfileShape, height, { sash: true, noSteel: true, noGasket: true });
+      sashRight.rotation.z = -Math.PI / 2;
+      sashRight.rotation.y = Math.PI / 2;
+      sashRight.rotation.x = Math.PI;
+      sashRight.position.set(width/2, height, 0);
+      sashGroup.add(sashRight);
+
+      return sashGroup;
+    }
+
+    // Left sash
+    const leftSash = buildSash(W_W/2 - 2.5, W_H - 2);
+    leftSash.position.set(-W_W/4 - 0.5, 1, 1.5);
+    leftSash.userData.layerId = 5;
+    leftSash.userData.partType = 'sash-left';
+    heroWindowGroup.add(leftSash);
+
+    // Right sash
+    const rightSash = buildSash(W_W/2 - 2.5, W_H - 2);
+    rightSash.position.set(W_W/4 + 0.5, 1, 1.5);
+    rightSash.userData.layerId = 5;
+    rightSash.userData.partType = 'sash-right';
+    heroWindowGroup.add(rightSash);
+
+    // === GLASS PANES ===
+    function makeGlassPane(w, h) {
+      const grp = new THREE.Group();
+      // Triple glazing — three panes with spacer
+      for (let i = 0; i < 3; i++) {
+        const pane = new THREE.Mesh(new THREE.BoxGeometry(w, h, 0.15), detailedGlass);
+        pane.position.z = (i - 1) * 0.4;
+        grp.add(pane);
+      }
+      return grp;
+    }
+
+    const leftGlass = makeGlassPane(W_W/2 - 4.5, W_H - 4);
+    leftGlass.position.set(-W_W/4 - 0.5, W_H/2, 1.7);
+    leftGlass.userData.layerId = 6;
+    leftGlass.userData.partType = 'glass-left';
+    heroWindowGroup.add(leftGlass);
+
+    const rightGlass = makeGlassPane(W_W/2 - 4.5, W_H - 4);
+    rightGlass.position.set(W_W/4 + 0.5, W_H/2, 1.7);
+    rightGlass.userData.layerId = 6;
+    rightGlass.userData.partType = 'glass-right';
+    heroWindowGroup.add(rightGlass);
+
+    // === HANDLES (gold/brass) ===
+    const handle1 = new THREE.Mesh(
+      new THREE.BoxGeometry(0.3, 1.6, 0.5),
+      goldMat
+    );
+    handle1.position.set(-1.4, W_H/2, 2.4);
+    handle1.castShadow = true;
+    handle1.userData.layerId = 7;
+    handle1.userData.partType = 'handle-left';
+    heroWindowGroup.add(handle1);
+
+    const handle2 = new THREE.Mesh(
+      new THREE.BoxGeometry(0.3, 1.6, 0.5),
+      goldMat
+    );
+    handle2.position.set(1.4, W_H/2, 2.4);
+    handle2.castShadow = true;
+    handle2.userData.layerId = 7;
+    handle2.userData.partType = 'handle-right';
+    heroWindowGroup.add(handle2);
+
+    // Lock pins (small)
+    for (let i = -1; i <= 1; i++) {
+      const pin = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.5, 0.5), goldMat);
+      pin.position.set(W_W/2 - 1.8, W_H/2 + i * 4, 1.5);
+      pin.userData.layerId = 7;
+      heroWindowGroup.add(pin);
+      const pin2 = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.5, 0.5), goldMat);
+      pin2.position.set(-W_W/2 + 1.8, W_H/2 + i * 4, 1.5);
+      pin2.userData.layerId = 7;
+      heroWindowGroup.add(pin2);
+    }
+
+    // Centre the whole assembly
+    heroWindowGroup.children.forEach(child => {
+      child.position.x -= 0;
+      child.position.y -= W_H/2;
+    });
+
+    /* ════════════════════════════════════════════════════════════════ */
+    /* DEFINE EXPLODE TARGETS for each part                              */
+    /* ════════════════════════════════════════════════════════════════ */
+    const dissectTargets = {
+      'frame-top':    { x: 0,    y:  3.5, z: -1.0 },
+      'frame-bottom': { x: 0,    y: -3.5, z: -1.0 },
+      'frame-left':   { x: -3.5, y:  0,   z: -1.0 },
+      'frame-right':  { x:  3.5, y:  0,   z: -1.0 },
+      'mullion':      { x: 0,    y:  0,   z: -2.5 },
+      'sash-left':    { x: -2.0, y:  0,   z:  2.0 },
+      'sash-right':   { x:  2.0, y:  0,   z:  2.0 },
+      'glass-left':   { x: -3.0, y: -0.5, z:  3.5 },
+      'glass-right':  { x:  3.0, y: -0.5, z:  3.5 },
+      'handle-left':  { x: -2.5, y: -3.0, z:  4.0 },
+      'handle-right': { x:  2.5, y: -3.0, z:  4.0 },
+    };
+
+    // Save original positions for each part
+    heroWindowGroup.children.forEach(child => {
+      child.userData.origX = child.position.x;
+      child.userData.origY = child.position.y;
+      child.userData.origZ = child.position.z;
+    });
+
+    /* ════════════════════════════════════════════════════════════════ */
+    /* SCROLL-DRIVEN CAMERA + EXPLODE                                    */
+    /* ════════════════════════════════════════════════════════════════ */
+    const cinemaStage = document.getElementById('cinema');
+    const panel1 = document.getElementById('panel1');
+    const panel2 = document.getElementById('panel2');
+    const panel3 = document.getElementById('panel3');
+    const panel4 = document.getElementById('panel4');
+    const layerCaption = document.getElementById('layerCaption');
+    const progFill = document.getElementById('progFill');
+    const hudStageNum = document.getElementById('hudStageNum');
+    const hudFocus = document.getElementById('hudFocus');
+    const hudScale = document.getElementById('hudScale');
+    const frameCanvas = document.getElementById('frame-canvas');
+    const frameCtx = frameCanvas ? frameCanvas.getContext('2d', { alpha: false }) : null;
+    const FRAME_COUNT = 192;
+    const assembledFrames = new Array(FRAME_COUNT);
+    const explodedFrames = new Array(FRAME_COUNT);
+    let sequenceReady = false;
+    let targetSequenceT = 0;
+    let renderedSequenceT = 0;
+    let sequenceRaf = 0;
+
+    const layerData = {
+      1: { name: 'The <em>frame</em> profile.', desc: 'Multi-chambered PVC-U extrusion. Five air pockets, a steel-core slot, and gasket grooves. 70mm wide.' },
+      5: { name: 'The <em>sash</em> profile.', desc: 'Smaller chambered profile. Holds the glass. Same chamber logic, same UV-stable PVC.' },
+      6: { name: 'Triple <em>glazing</em>.', desc: 'Three panes of 4mm float glass, separated by 12mm spacers filled with argon.' },
+      7: { name: 'Lock &amp; <em>hardware</em>.', desc: 'German multi-point locking. The sash pulls itself tight against the gasket.' },
+    };
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function sequenceFramePath(folder, index) {
+      return `animation_gif/${folder}/${String(index).padStart(4, '0')}.jpg`;
+    }
+
+    function loadImage(src) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.decoding = 'async';
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
+      });
+    }
+
+    function fitContain(sourceW, sourceH, targetW, targetH) {
+      const scale = Math.min(targetW / sourceW, targetH / sourceH);
+      const drawW = sourceW * scale;
+      const drawH = sourceH * scale;
+      const drawX = (targetW - drawW) / 2;
+      const drawY = (targetH - drawH) / 2;
+      return { drawX, drawY, drawW, drawH };
+    }
+
+    function frameByProgress(progress) {
+      if (progress < 0.34) {
+        const p = progress / 0.34;
+        const idx = Math.min(FRAME_COUNT - 1, Math.round(p * (FRAME_COUNT - 1)));
+        return assembledFrames[idx];
+      }
+      if (progress < 0.82) {
+        const p = (progress - 0.34) / 0.48;
+        const idx = Math.min(FRAME_COUNT - 1, Math.round(p * (FRAME_COUNT - 1)));
+        return explodedFrames[idx];
+      }
+      const p = (progress - 0.82) / 0.18;
+      const idx = Math.max(0, FRAME_COUNT - 1 - Math.round(p * (FRAME_COUNT - 1)));
+      return explodedFrames[idx];
+    }
+
+    function drawSequenceFrame(progress) {
+      if (!frameCtx || !frameCanvas || !sequenceReady) return;
+      const frame = frameByProgress(progress);
+      if (!frame) return;
+      const width = frameCanvas.width;
+      const height = frameCanvas.height;
+      frameCtx.fillStyle = '#070b12';
+      frameCtx.fillRect(0, 0, width, height);
+      const fit = fitContain(frame.width, frame.height, width, height);
+      frameCtx.drawImage(frame, fit.drawX, fit.drawY, fit.drawW, fit.drawH);
+    }
+
+    function tickSequenceRender() {
+      const delta = targetSequenceT - renderedSequenceT;
+      renderedSequenceT += delta * 0.18;
+      if (Math.abs(delta) < 0.0008) {
+        renderedSequenceT = targetSequenceT;
+      }
+      drawSequenceFrame(renderedSequenceT);
+      if (Math.abs(targetSequenceT - renderedSequenceT) > 0.0008) {
+        sequenceRaf = requestAnimationFrame(tickSequenceRender);
+      } else {
+        sequenceRaf = 0;
+      }
+    }
+
+    function renderSequenceTo(progress) {
+      targetSequenceT = Math.max(0, Math.min(1, progress));
+      if (!sequenceRaf) {
+        sequenceRaf = requestAnimationFrame(tickSequenceRender);
+      }
+    }
+
+    function resizeSequenceCanvas() {
+      if (!frameCanvas) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const targetW = Math.round(window.innerWidth * dpr);
+      const targetH = Math.round(window.innerHeight * dpr);
+      if (frameCanvas.width !== targetW || frameCanvas.height !== targetH) {
+        frameCanvas.width = targetW;
+        frameCanvas.height = targetH;
+      }
+      drawSequenceFrame(renderedSequenceT);
+    }
+
+    async function preloadSequence() {
+      try {
+        const tasks = [];
+        for (let i = 0; i < FRAME_COUNT; i += 1) {
+          tasks.push(
+            loadImage(sequenceFramePath('assembled_frames', i)).then((img) => { assembledFrames[i] = img; }),
+            loadImage(sequenceFramePath('exploded_frames', i)).then((img) => { explodedFrames[i] = img; })
+          );
+        }
+        await Promise.all(tasks);
+        sequenceReady = true;
+        renderSequenceTo(targetSequenceT);
+      } catch (error) {
+        console.warn('Frame sequence failed to preload.', error);
+      }
+    }
+
+    function applyScene(t) {
+      document.documentElement.style.setProperty('--cinema-progress', t.toFixed(4));
+      // 0.00–0.18: HOUSE wide
+      // 0.18–0.38: ZOOM toward window
+      // 0.38–0.55: CROSS-SECTION reveal — show the actual chambered profile up close
+      // 0.55–0.88: LAYERS explode apart in 3D
+      // 0.88–1.00: REASSEMBLE → CTA
+
+      let camX, camY, camZ, lookX, lookY, lookZ;
+
+      if (t < 0.18) {
+        const u = t / 0.18;
+        const angle = -0.2 + u * 0.5;
+        const radius = 38 - u * 6;
+        camX = Math.sin(angle) * radius;
+        camZ = Math.cos(angle) * radius;
+        camY = 12 - u * 2;
+        lookX = 0; lookY = 7; lookZ = 0;
+      } else if (t < 0.38) {
+        const u = (t - 0.18) / 0.20;
+        const eu = u*u*(3 - 2*u);
+        camX = lerp(Math.sin(0.3) * 32, HERO_X * 0.3, eu);
+        camZ = lerp(Math.cos(0.3) * 32, HERO_Z + 7, eu);
+        camY = lerp(10, HERO_Y, eu);
+        lookX = lerp(0, HERO_X, eu);
+        lookY = lerp(7, HERO_Y, eu);
+        lookZ = lerp(0, HERO_Z, eu);
+      } else if (t < 0.55) {
+        // Up-close, slow rotation revealing the cross-section detail
+        const u = (t - 0.38) / 0.17;
+        const eu = u*u*(3 - 2*u);
+        const orbitAngle = -0.4 + eu * 0.8;
+        const dist = 6 - eu * 1.0;
+        camX = HERO_X + Math.sin(orbitAngle) * dist * 0.4;
+        camZ = HERO_Z + 0.5 + Math.cos(orbitAngle) * dist;
+        camY = HERO_Y - 0.3 + eu * 0.6;
+        lookX = HERO_X; lookY = HERO_Y - 0.3; lookZ = HERO_Z + 0.5;
+      } else if (t < 0.88) {
+        // EXPLODE — pull camera back so user can see all the parts flying apart
+        const u = (t - 0.55) / 0.33;
+        const eu = u*u*(3 - 2*u);
+        const orbitAngle = 0.4 + eu * 0.5;
+        const dist = 5.5 + eu * 4;
+        camX = HERO_X + Math.sin(orbitAngle) * dist * 0.6;
+        camZ = HERO_Z + 0.5 + Math.cos(orbitAngle) * dist;
+        camY = HERO_Y + eu * 0.8;
+        lookX = HERO_X; lookY = HERO_Y; lookZ = HERO_Z + 0.5;
+      } else {
+        // REASSEMBLE
+        const u = (t - 0.88) / 0.12;
+        camX = HERO_X + Math.sin(0.9) * 4.0;
+        camZ = HERO_Z + 0.5 + Math.cos(0.9) * 6 - u * 0.5;
+        camY = HERO_Y + 0.8;
+        lookX = HERO_X; lookY = HERO_Y; lookZ = HERO_Z + 0.5;
+      }
+
+      camera.position.set(camX, camY, camZ);
+      camera.lookAt(lookX, lookY, lookZ);
+
+      // House visibility — fade out 0.32–0.42
+      let houseOp = 1;
+      if (t > 0.32 && t < 0.42) houseOp = 1 - (t - 0.32) / 0.10;
+      else if (t >= 0.42 && t < 0.95) houseOp = 0;
+      else if (t >= 0.95) houseOp = (t - 0.95) / 0.05;
+      houseGroup.traverse(obj => {
+        if (obj.isMesh) {
+          if (obj.material._origOp === undefined) obj.material._origOp = obj.material.opacity ?? 1;
+          obj.material.transparent = true;
+          obj.material.opacity = obj.material._origOp * houseOp;
+        }
+      });
+      houseGroup.visible = houseOp > 0.01;
+
+      // Hero window visibility 0.32 onward
+      heroWindowGroup.visible = t > 0.32;
+      let heroOp = Math.min(1, Math.max(0, (t - 0.32) / 0.10));
+      heroWindowGroup.traverse(obj => {
+        if (obj.isMesh) {
+          if (obj.material._origOp2 === undefined) obj.material._origOp2 = obj.material.opacity ?? 1;
+          obj.material.transparent = true;
+          obj.material.opacity = obj.material._origOp2 * heroOp;
+        }
+      });
+
+      // EXPLODE phase 0.55 – 0.88
+      const explStart = 0.55, explEnd = 0.88;
+      const reaStart = 0.88, reaEnd = 1.0;
+      let explodeProgress = 0;
+      let activeLayer = 0;
+      if (t >= explStart && t < explEnd) {
+        const u = (t - explStart) / (explEnd - explStart);
+        // The whole explosion happens with each PART having its own timing window
+        // For active layer caption: 0–0.25 = layer 1 (frame), 0.25–0.5 = layer 5 (sash), 0.5–0.75 = layer 6 (glass), 0.75–1 = layer 7 (hardware)
+        if (u < 0.25) activeLayer = 1;
+        else if (u < 0.5) activeLayer = 5;
+        else if (u < 0.75) activeLayer = 6;
+        else activeLayer = 7;
+        explodeProgress = u;
+      } else if (t >= reaStart) {
+        explodeProgress = 1 - (t - reaStart) / (reaEnd - reaStart);
+      }
+
+      // Apply explode offsets per part
+      heroWindowGroup.children.forEach(child => {
+        const partType = child.userData.partType;
+        const layerId = child.userData.layerId;
+        const target = dissectTargets[partType];
+        if (!target) return;
+
+        // Each layer eases in over its own window
+        let p = 0;
+        if (t >= explStart && t < explEnd) {
+          const u = (t - explStart) / (explEnd - explStart);
+          let layerStart = 0, layerEnd = 0;
+          if (layerId === 1) { layerStart = 0; layerEnd = 0.4; }
+          else if (layerId === 5) { layerStart = 0.25; layerEnd = 0.65; }
+          else if (layerId === 6) { layerStart = 0.5; layerEnd = 0.85; }
+          else if (layerId === 7) { layerStart = 0.7; layerEnd = 1.0; }
+          const lp = Math.max(0, Math.min(1, (u - layerStart) / (layerEnd - layerStart)));
+          p = 1 - Math.pow(1 - lp, 3); // ease out
+        } else if (t >= reaStart) {
+          p = 1 - (t - reaStart) / (reaEnd - reaStart);
+        }
+
+        child.position.x = child.userData.origX + target.x * p;
+        child.position.y = child.userData.origY + target.y * p;
+        child.position.z = child.userData.origZ + target.z * p;
+      });
+
+      // Slow rotation of whole window during explode
+      heroWindowGroup.rotation.y = (t > explStart && t < reaEnd ? (t - explStart) * 0.4 : 0);
+
+      // Panels
+      panel1.classList.toggle('active', t < 0.16);
+      panel2.classList.toggle('active', t >= 0.18 && t < 0.36);
+      panel3.classList.toggle('active', t >= 0.42 && t < 0.55);
+      panel4.classList.toggle('active', t >= 0.92);
+
+      // Layer caption during explode
+      if (t >= explStart && t < explEnd && activeLayer && layerData[activeLayer]) {
+        layerCaption.classList.add('visible');
+        const ld = layerData[activeLayer];
+        document.getElementById('layerCapNum').textContent = `PART ${activeLayer === 1 ? '01 / FRAME' : activeLayer === 5 ? '02 / SASH' : activeLayer === 6 ? '03 / GLASS' : '04 / HARDWARE'}`;
+        document.getElementById('layerCapName').innerHTML = ld.name;
+        document.getElementById('layerCapDesc').textContent = ld.desc;
+      } else {
+        layerCaption.classList.remove('visible');
+      }
+
+      // HUD
+      let stageLabel, focus, scale;
+      if (t < 0.18) { stageLabel = 'Act I · House'; focus = 'INFINITY'; scale = '1 : 100'; }
+      else if (t < 0.38) { stageLabel = 'Act II · Zoom'; focus = `${(50 - t * 80).toFixed(1)}m`; scale = '1 : 50'; }
+      else if (t < 0.55) { stageLabel = 'Act III · Profile'; focus = '0.7m'; scale = '1 : 1'; }
+      else if (t < 0.88) { stageLabel = `Act IV · Disassembly`; focus = '0.5m'; scale = '1 : 1'; }
+      else { stageLabel = 'Build'; focus = 'CTA'; scale = '1 : 1'; }
+
+      hudStageNum.textContent = stageLabel.split(' · ')[1] || stageLabel;
+      hudFocus.textContent = `FOCUS · ${focus}`;
+      hudScale.textContent = `SCALE · ${scale}`;
+
+      progFill.style.width = (t * 100) + '%';
+
+      document.querySelectorAll('.stage-dot').forEach(dot => {
+        const target = parseFloat(dot.dataset.target);
+        dot.classList.toggle('active', Math.abs(t - target) < 0.13);
+      });
+      renderSequenceTo(t);
+    }
+
+    function onScrollScene() {
+      const rect = cinemaStage.getBoundingClientRect();
+      const total = cinemaStage.offsetHeight - window.innerHeight;
+      let t = -rect.top / total;
+      t = Math.max(0, Math.min(1, t));
+      applyScene(t);
+    }
+
+    function onResize() {
+      const sz = getSize();
+      w = sz.w; h = sz.h;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      resizeSequenceCanvas();
+    }
+    window.addEventListener('resize', onResize);
+    window.addEventListener('scroll', onScrollScene, { passive: true });
+
+    function loop3D() {
+      rim.intensity = 0.5 + Math.sin(performance.now() * 0.001) * 0.15;
+      renderer.render(scene, camera);
+      requestAnimationFrame(loop3D);
+    }
+    resizeSequenceCanvas();
+    preloadSequence();
+    onScrollScene();
+    loop3D();
+
+    document.querySelectorAll('.stage-dot').forEach(d => {
+      d.addEventListener('click', () => {
+        const target = parseFloat(d.dataset.target);
+        const total = cinemaStage.offsetHeight - window.innerHeight;
+        const offset = cinemaStage.offsetTop;
+        window.scrollTo({ top: offset + target * total, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+<script src="assets/js/finalize.js"></script>
+</body>
+</html>
