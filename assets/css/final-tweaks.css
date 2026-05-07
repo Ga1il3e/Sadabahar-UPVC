@@ -55,7 +55,6 @@
 }
 
 /* Minimal content mode: keep only high-value text */
-.marquee-band,
 #compare,
 .service-tags,
 .property-desc,
@@ -64,12 +63,10 @@
   display: none !important;
 }
 
+/* Engineering HUD is part of the cinematic story — leave .tl on */
 .hud-corner.tr,
 .hud-corner.bl,
 .hud-corner.br {
-  display: none !important;
-}
-.hud-corner.tl {
   display: none !important;
 }
 
@@ -124,6 +121,296 @@ footer {
 .nav-links a[href="#profiles"],
 .nav-links a[href="#science"] {
   display: none !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   ANATOMY · scroll-driven detailed dissection of the UPVC
+   ──────────────────────────────────────────────────────────────────────── */
+.anatomy-stage {
+  position: relative;
+  height: 720vh;
+  z-index: 5;
+  background: #06090e;
+}
+.anatomy-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 70% 20%, rgba(232, 125, 62, 0.10), transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(74, 157, 150, 0.10), transparent 60%),
+    linear-gradient(180deg, #07090e 0%, #0a0e14 100%);
+}
+.anatomy-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 2;
+}
+.anatomy-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(232, 125, 62, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 125, 62, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 75%);
+  opacity: 0.55;
+}
+.anatomy-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 28%, rgba(6, 9, 14, 0.42) 80%, rgba(6, 9, 14, 0.7) 100%);
+}
+
+/* HUD-style meta panels */
+.anatomy-meta {
+  position: absolute;
+  z-index: 9;
+  pointer-events: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.anatomy-meta.tl { top: 110px; left: 40px; flex-direction: row; align-items: center; gap: 14px; }
+.anatomy-meta.tr { top: 110px; right: 40px; align-items: flex-end; }
+.anatomy-meta.br { bottom: 60px; right: 40px; align-items: flex-end; }
+
+.anatomy-meta .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--copper);
+  box-shadow: 0 0 0 0 rgba(232, 125, 62, 0.55);
+  animation: pulse 2s infinite;
+}
+.anatomy-meta .lbl { color: var(--copper); font-size: 10px; letter-spacing: 0.22em; }
+.anatomy-meta .title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-transform: none;
+  line-height: 1;
+  margin-top: 4px;
+}
+.anatomy-meta .kv {
+  display: flex; gap: 14px; align-items: baseline;
+  font-size: 10px;
+}
+.anatomy-meta .kv span { color: var(--ink-mute); width: 80px; text-align: right; }
+.anatomy-meta .kv b {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+/* Station copy panels (left side) */
+.anatomy-panels {
+  position: absolute;
+  z-index: 8;
+  left: 0;
+  bottom: 110px;
+  width: min(560px, 44vw);
+  padding: 0 40px 0 60px;
+  pointer-events: none;
+}
+.anatomy-panels .ap {
+  position: absolute;
+  inset: auto auto 0 0;
+  width: 100%;
+  padding: 24px 28px;
+  background: linear-gradient(150deg, rgba(7, 10, 17, 0.62), rgba(11, 16, 24, 0.42));
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.anatomy-panels .ap.on { opacity: 1; transform: none; }
+.anatomy-panels .ap-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 14px;
+}
+.anatomy-panels .ap-h {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.anatomy-panels .ap-h em { font-style: italic; color: var(--copper); }
+.anatomy-panels .ap-p {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 460px;
+}
+.anatomy-panels .ap-p em { font-style: italic; color: var(--ink); }
+
+/* Hotspot pins anchored from world space */
+.anatomy-hotspots {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+}
+.hotspot {
+  position: absolute;
+  top: 0; left: 0;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+  cursor: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.hot-pin {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(232, 125, 62, 0.28);
+  box-shadow:
+    inset 0 0 0 2px var(--copper),
+    0 0 0 0 rgba(232, 125, 62, 0.65);
+  animation: hotPinPulse 2.4s ease-out infinite;
+  flex-shrink: 0;
+}
+@keyframes hotPinPulse {
+  0%   { box-shadow: inset 0 0 0 2px var(--copper), 0 0 0 0 rgba(232, 125, 62, 0.55); }
+  60%  { box-shadow: inset 0 0 0 2px var(--copper), 0 0 0 14px rgba(232, 125, 62, 0); }
+  100% { box-shadow: inset 0 0 0 2px var(--copper), 0 0 0 0 rgba(232, 125, 62, 0); }
+}
+.hot-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(8, 12, 18, 0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 7px 12px;
+  white-space: nowrap;
+  transform: translateX(-4px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.hot-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.hot-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.hotspot.focus .hot-card,
+.hotspot:hover .hot-card {
+  transform: translateX(0);
+  border-color: var(--copper);
+}
+
+/* Rail */
+.anatomy-rail {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  width: min(520px, 80vw);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+.anatomy-rail-fill {
+  height: 2px;
+  background: linear-gradient(90deg, var(--copper), var(--copper-bright));
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.15s linear;
+}
+.anatomy-rail-ticks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ar-tick {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--ink-mute);
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+}
+.ar-tick:hover {
+  border-color: var(--copper);
+  color: var(--copper);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .anatomy-stage { height: 620vh; }
+  .anatomy-meta.tl { top: 86px; left: 16px; }
+  .anatomy-meta.tr,
+  .anatomy-meta.br { display: none; }
+  .anatomy-meta .title { font-size: 22px; }
+
+  .anatomy-panels {
+    width: calc(100% - 32px);
+    bottom: 80px;
+    padding: 0 16px;
+  }
+  .anatomy-panels .ap { padding: 16px 18px; border-radius: 10px; }
+  .anatomy-panels .ap-h { font-size: clamp(22px, 6vw, 30px); }
+  .anatomy-panels .ap-p { font-size: 14px; }
+
+  .hot-card { padding: 6px 9px; }
+  .hot-label { font-size: 9px; letter-spacing: 0.14em; }
+  .hot-sub { font-size: 11px; }
+
+  .anatomy-rail { bottom: 14px; width: calc(100% - 32px); }
+  .ar-tick { width: 22px; height: 22px; font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hot-pin { animation: none; }
 }
 
 /* First-load hero clarity image */

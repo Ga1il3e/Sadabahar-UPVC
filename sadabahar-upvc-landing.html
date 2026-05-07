@@ -764,6 +764,7 @@
 <nav id="nav">
   <div class="nav-mark">Sadabahar <em>UPVC.</em></div>
   <div class="nav-links">
+    <a href="#anatomy">Anatomy</a>
     <a href="#profiles">Profiles</a>
     <a href="#services">Services</a>
     <a href="#science">Science</a>
@@ -862,6 +863,87 @@
 </div>
 
 <div class="progress-rail"><div class="progress-fill" id="progFill"></div></div>
+
+<!-- ANATOMY · scroll-driven detailed dissection of the UPVC -->
+<section class="anatomy-stage" id="anatomy" aria-label="UPVC anatomy">
+  <div class="anatomy-sticky">
+    <canvas id="anatomy-canvas" class="anatomy-canvas"></canvas>
+
+    <div class="anatomy-grid"></div>
+    <div class="anatomy-vignette"></div>
+
+    <!-- Hotspots are positioned by JS from world-space anchors -->
+    <div class="anatomy-hotspots" id="anatomyHotspots" aria-hidden="true"></div>
+
+    <div class="anatomy-meta tl">
+      <div class="dot"></div>
+      <div>
+        <div class="lbl">§ 02 / Anatomy</div>
+        <div class="title" id="anatomyStation">Cross-section</div>
+      </div>
+    </div>
+
+    <div class="anatomy-meta tr">
+      <div class="kv"><span>System</span><b>Baydee BD70</b></div>
+      <div class="kv"><span>Width</span><b>70 mm</b></div>
+      <div class="kv"><span>Depth</span><b>75 mm</b></div>
+      <div class="kv"><span>Wall</span><b>2.5 mm</b></div>
+    </div>
+
+    <div class="anatomy-meta br">
+      <div class="kv"><span>Chambers</span><b id="anatomyChambers">5</b></div>
+      <div class="kv"><span>Glazing</span><b id="anatomyGlazing">4 – 24 mm</b></div>
+      <div class="kv"><span>Reinforce</span><b>Galv. steel</b></div>
+      <div class="kv"><span>Seal</span><b>EPDM ×2</b></div>
+    </div>
+
+    <!-- Station copy panels (fade in / out by progress) -->
+    <div class="anatomy-panels" id="anatomyPanels">
+      <div class="ap" data-i="0">
+        <div class="ap-num">STATION 01 · § A</div>
+        <h3 class="ap-h">Five air chambers,<br>not one.</h3>
+        <p class="ap-p">A single solid wall of plastic conducts heat. The Baydee profile is hollowed into <em>five sealed air pockets</em> — each a tiny insulator. Air carries heat 8 000× worse than aluminium.</p>
+      </div>
+      <div class="ap" data-i="1">
+        <div class="ap-num">STATION 02 · § B</div>
+        <h3 class="ap-h">A steel <em>spine</em>,<br>hidden inside.</h3>
+        <p class="ap-p">The central chamber carries a <em>1.5 mm galvanised steel U-channel</em>. PVC flexes; steel won't. A 2.4 m sash stays plumb after a decade of monsoons.</p>
+      </div>
+      <div class="ap" data-i="2">
+        <div class="ap-num">STATION 03 · § C</div>
+        <h3 class="ap-h">Two lines of <em>EPDM</em>.<br>Two lines of silence.</h3>
+        <p class="ap-p">The sash pulls itself onto two co-extruded EPDM gaskets — one outer, one inner. Wind, rain, and street noise hit a <em>double rubber wall</em> before they reach you.</p>
+      </div>
+      <div class="ap" data-i="3">
+        <div class="ap-num">STATION 04 · § D</div>
+        <h3 class="ap-h">Three panes.<br><em>Argon</em> in between.</h3>
+        <p class="ap-p">Two 4 mm float panes, one 4 mm low-e pane, two 12 mm cavities filled with argon. Heat slows. Sound drops <em>by 30 dB</em>. The view doesn't change.</p>
+      </div>
+      <div class="ap" data-i="4">
+        <div class="ap-num">STATION 05 · § E</div>
+        <h3 class="ap-h">Multi-point lock.<br><em>Eight</em> contact points.</h3>
+        <p class="ap-p">One handle, eight steel mushrooms. They cam outward into the frame keeps and pull the sash <em>tight against the gasket</em> — a uniform seal that a single-point lock can't match.</p>
+      </div>
+      <div class="ap" data-i="5">
+        <div class="ap-num">STATION 06 · § F</div>
+        <h3 class="ap-h">Built once. <em>Forty</em> years.</h3>
+        <p class="ap-p">Lead-free PVC-U, UV stabilisers, galvanised core, EPDM gaskets, German hardware. Each part chosen so the next forty monsoons don't change a thing.</p>
+      </div>
+    </div>
+
+    <div class="anatomy-rail">
+      <div class="anatomy-rail-fill" id="anatomyRailFill"></div>
+      <div class="anatomy-rail-ticks">
+        <button class="ar-tick" data-target="0.04" aria-label="Cross-section"><span>A</span></button>
+        <button class="ar-tick" data-target="0.22" aria-label="Steel core"><span>B</span></button>
+        <button class="ar-tick" data-target="0.42" aria-label="Gaskets"><span>C</span></button>
+        <button class="ar-tick" data-target="0.62" aria-label="Glazing"><span>D</span></button>
+        <button class="ar-tick" data-target="0.80" aria-label="Lock"><span>E</span></button>
+        <button class="ar-tick" data-target="0.96" aria-label="Build"><span>F</span></button>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- MARQUEE -->
 <div class="marquee-band">
@@ -1930,12 +2012,17 @@
       renderSequenceTo(t);
     }
 
+    /* Cinema scene RAF easing: scroll sets a target; loop eases rendered T
+       toward it so the camera + explode follow the wheel/finger with light
+       inertia rather than snapping. Reduced-motion users get instant. */
+    const reduceMotionCinema = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let targetSceneT = 0, renderedSceneT = 0;
+
     function onScrollScene() {
       const rect = cinemaStage.getBoundingClientRect();
       const total = cinemaStage.offsetHeight - window.innerHeight;
       let t = -rect.top / total;
-      t = Math.max(0, Math.min(1, t));
-      applyScene(t);
+      targetSceneT = Math.max(0, Math.min(1, t));
     }
 
     function onResize() {
@@ -1951,12 +2038,17 @@
 
     function loop3D() {
       rim.intensity = 0.5 + Math.sin(performance.now() * 0.001) * 0.15;
+      const ease = reduceMotionCinema ? 1 : 0.18;
+      renderedSceneT += (targetSceneT - renderedSceneT) * ease;
+      if (Math.abs(targetSceneT - renderedSceneT) < 0.0006) renderedSceneT = targetSceneT;
+      applyScene(renderedSceneT);
       renderer.render(scene, camera);
       requestAnimationFrame(loop3D);
     }
     resizeSequenceCanvas();
     preloadSequence();
     onScrollScene();
+    applyScene(targetSceneT);
     loop3D();
 
     document.querySelectorAll('.stage-dot').forEach(d => {
@@ -1969,6 +2061,7 @@
     });
   })();
 </script>
+<script src="assets/js/dissection.js"></script>
 <script src="assets/js/finalize.js"></script>
 </body>
 </html>
