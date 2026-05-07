@@ -289,27 +289,34 @@
      HOTSPOTS — DOM pins anchored to world-space points.
      Each hotspot has a stage range during which it's visible.
      ============================================================ */
+  /* Stations (cross-faded via opacity, no longer overlapping in space):
+       A · 0.00–0.18  cross-section orbit
+       B · 0.18–0.36  steel core (profile locked)
+       C · 0.36–0.54  EPDM gaskets (profile locked)
+       D · 0.54–0.74  triple glazing (profile faded out, glazing crossfade in)
+       E · 0.74–0.92  multi-point lock (glazing faded out, sash crossfade in)
+       F · 0.92–1.00  reassembly (everything fades back) */
   const hotspots = [
-    // Cross-section chambers (Station A, ~0.00–0.18)
-    { id: 'C1', label: 'Chamber 1', sub: 'Outer thermal break',  pos: () => world(profileGroup, -2.6, -2.0, 1.4),  range: [0.00, 0.20] },
-    { id: 'C2', label: 'Chamber 2', sub: 'Steel core slot',      pos: () => world(profileGroup,  0.9, -1.8, 1.4),  range: [0.00, 0.32] },
-    { id: 'C3', label: 'Chamber 3', sub: 'Upper insulator',      pos: () => world(profileGroup, -2.0,  1.3, 1.4),  range: [0.00, 0.20] },
-    { id: 'C4', label: 'Chamber 4', sub: 'Top thermal break',    pos: () => world(profileGroup, -1.5,  3.1, 1.4),  range: [0.00, 0.20] },
-    { id: 'C5', label: 'Chamber 5', sub: 'Gasket carrier',       pos: () => world(profileGroup,  0.4,  1.6, 1.4),  range: [0.00, 0.20] },
-    // Steel core (Station B)
-    { id: 'STEEL', label: 'Galvanised steel U-channel', sub: '1.5 mm wall · zinc-plated', pos: () => world(profileGroup, STEEL_HOME.x, STEEL_HOME.y + 0.4, 1.4), range: [0.20, 0.34] },
+    // Chambers — visible while profile is the focus (A + early B)
+    { id: 'C1', label: 'Chamber 1', sub: 'Outer thermal break',  pos: () => world(profileGroup, -2.6, -2.0, 1.4),  range: [0.02, 0.22] },
+    { id: 'C2', label: 'Chamber 2', sub: 'Steel core slot',      pos: () => world(profileGroup,  0.9, -1.8, 1.4),  range: [0.02, 0.20] },
+    { id: 'C3', label: 'Chamber 3', sub: 'Upper insulator',      pos: () => world(profileGroup, -2.0,  1.3, 1.4),  range: [0.02, 0.18] },
+    { id: 'C4', label: 'Chamber 4', sub: 'Top thermal break',    pos: () => world(profileGroup, -1.4,  3.1, 1.4),  range: [0.02, 0.18] },
+    { id: 'C5', label: 'Chamber 5', sub: 'Gasket carrier',       pos: () => world(profileGroup,  0.4,  1.6, 1.4),  range: [0.02, 0.18] },
+    // Steel (Station B)
+    { id: 'STEEL', label: 'Galvanised steel U-channel', sub: '1.5 mm wall · zinc-plated', pos: () => world(profileGroup, STEEL_HOME.x, STEEL_HOME.y + 0.4, 1.4), range: [0.22, 0.36] },
     // Gaskets (Station C)
-    { id: 'GASK_OUT', label: 'Outer EPDM gasket', sub: 'Co-extruded · weather seal', pos: () => world(profileGroup, GASKET_OUTER_HOME.x + 0.4, GASKET_OUTER_HOME.y, 1.4), range: [0.36, 0.54] },
+    { id: 'GASK_OUT', label: 'Outer EPDM gasket', sub: 'Co-extruded · weather seal', pos: () => world(profileGroup, GASKET_OUTER_HOME.x + 0.4, GASKET_OUTER_HOME.y, 1.4), range: [0.38, 0.54] },
     { id: 'GASK_IN',  label: 'Inner EPDM gasket', sub: 'Acoustic seal · –30 dB',     pos: () => world(profileGroup, GASKET_INNER_HOME.x, GASKET_INNER_HOME.y + 0.5, 1.4), range: [0.42, 0.54] },
     // Glazing (Station D)
-    { id: 'PANE_OUT', label: 'Outer pane · 4 mm float',    sub: 'Tempered',          pos: () => world(glazingGroup, 0, PANE_H/2 - 0.5, panes[2].position.z), range: [0.56, 0.72] },
-    { id: 'PANE_MID', label: 'Mid pane · 4 mm low-e',      sub: 'Argon 12 mm · IR coat', pos: () => world(glazingGroup, 0, 0, panes[1].position.z), range: [0.56, 0.72] },
-    { id: 'PANE_IN',  label: 'Inner pane · 4 mm float',    sub: 'Tempered',          pos: () => world(glazingGroup, 0, -PANE_H/2 + 0.5, panes[0].position.z), range: [0.56, 0.72] },
-    { id: 'SPACER',   label: 'Aluminium spacer',           sub: 'Desiccant filled',  pos: () => world(glazingGroup, PANE_W/2 - 1.0, PANE_H/2 - 0.2, 0), range: [0.58, 0.72] },
-    // Lock (Station E) — a generic callout on right side and top
-    { id: 'LOCK_R',   label: 'Mushroom cam',  sub: '× 3 right edge', pos: () => world(sashGroup,  S_W/2 + 0.6,  S_H/3, 0.6), range: [0.74, 0.92] },
-    { id: 'LOCK_T',   label: 'Top lock pin',  sub: 'Anti-lift',      pos: () => world(sashGroup,  0,  S_H/2 + 0.6, 0.6), range: [0.74, 0.92] },
-    { id: 'HANDLE',   label: 'German handle', sub: 'Tilt + turn',    pos: () => world(sashGroup, -S_W/2 - 0.6, 0, 0.7),    range: [0.74, 0.92] },
+    { id: 'PANE_OUT', label: 'Outer pane · 4 mm float',    sub: 'Tempered',          pos: () => world(glazingGroup, 0, PANE_H/2 - 0.5, panes[2].position.z), range: [0.58, 0.72] },
+    { id: 'PANE_MID', label: 'Mid pane · 4 mm low-e',      sub: 'Argon 12 mm · IR coat', pos: () => world(glazingGroup, 0, 0, panes[1].position.z), range: [0.58, 0.72] },
+    { id: 'PANE_IN',  label: 'Inner pane · 4 mm float',    sub: 'Tempered',          pos: () => world(glazingGroup, 0, -PANE_H/2 + 0.5, panes[0].position.z), range: [0.58, 0.72] },
+    { id: 'SPACER',   label: 'Aluminium spacer',           sub: 'Desiccant · argon fill',  pos: () => world(glazingGroup, PANE_W/2 - 1.0, PANE_H/2 - 0.2, 0), range: [0.60, 0.72] },
+    // Lock (Station E)
+    { id: 'LOCK_R',   label: 'Mushroom cam',  sub: '× 3 right edge', pos: () => world(sashGroup,  S_W/2 + 0.6,  S_H/3, 0.6), range: [0.78, 0.92] },
+    { id: 'LOCK_T',   label: 'Top lock pin',  sub: 'Anti-lift',      pos: () => world(sashGroup,  0,  S_H/2 + 0.6, 0.6), range: [0.78, 0.92] },
+    { id: 'HANDLE',   label: 'German handle', sub: 'Tilt + turn',    pos: () => world(sashGroup, -S_W/2 - 0.6, 0, 0.7),    range: [0.76, 0.92] },
   ];
 
   // Pre-create hotspot DOM nodes
@@ -369,156 +376,164 @@
     'Triple glazing', 'Multi-point lock', 'Reassembly'
   ];
   const STATION_RANGES = [
-    [0.00, 0.18], [0.18, 0.34], [0.34, 0.54],
-    [0.54, 0.72], [0.72, 0.92], [0.92, 1.00]
+    [0.00, 0.18], [0.18, 0.36], [0.36, 0.54],
+    [0.54, 0.74], [0.74, 0.92], [0.92, 1.00]
   ];
 
+  /* The "settled" 3/4 angle the profile holds for stations B & C.
+     Slight Y rotation so chambers remain readable; a gentle X tilt
+     so the camera sees the front face (with chambers) rather than
+     looking edge-on. */
+  const PROFILE_REST_Y = -0.45;
+  const PROFILE_REST_X = -0.12;
+
+  /* Group opacity helper — caches each material's original opacity,
+     marks transparent, and multiplies by the supplied factor. Used
+     to cross-fade between profile / glazing / sash without any
+     positional shenanigans. */
+  function setGroupOpacity(group, op) {
+    group.traverse(obj => {
+      if (!obj.isMesh) return;
+      const m = obj.material;
+      if (m._origOp === undefined) m._origOp = m.opacity == null ? 1 : m.opacity;
+      m.transparent = true;
+      m.opacity = m._origOp * op;
+    });
+  }
+
   function applyScene(t) {
-    /* ---- camera path: orbit profile, then dolly out for full window ---- */
-    let camX, camY, camZ, lookX = 0, lookY = 0, lookZ = 0;
+    /* ─── CAMERA: stable for B & C, gentle pull-out into D & E ─── */
+    let camX, camY, camZ;
+    let lookX = 0, lookY = 0, lookZ = 0;
+
     if (t < 0.18) {
-      // Slow turntable around the cross-section
+      // Station A · turntable orbit
       const u = t / 0.18;
-      const ang = -0.55 + u * 1.3;
-      const dist = 12 - u * 0.5;
+      const ang = -0.55 + u * 1.0;     // sweep ~58° total
+      const dist = 12 - u * 0.4;
       camX = Math.sin(ang) * dist;
-      camY = 1.2 - u * 0.3;
+      camY = 1.0 - u * 0.2;
       camZ = Math.cos(ang) * dist;
-    } else if (t < 0.34) {
-      // Pull back slightly so the steel core entry is visible
-      const u = (t - 0.18) / 0.16;
-      camX = lerp(Math.sin(0.75) * 11.5, 4.5, smooth(u));
-      camY = lerp(0.9, 1.4, smooth(u));
-      camZ = lerp(Math.cos(0.75) * 11.5, 12.8, smooth(u));
     } else if (t < 0.54) {
-      // Tilt up + side angle for gaskets
-      const u = (t - 0.34) / 0.20;
-      camX = lerp(4.5, -3.6, smooth(u));
-      camY = lerp(1.4, 2.4, smooth(u));
-      camZ = lerp(12.8, 11.6, smooth(u));
-    } else if (t < 0.72) {
-      // Travel right to glazing pack
-      const u = (t - 0.54) / 0.18;
-      camX = lerp(-3.6, 0.4, smooth(u));
-      camY = lerp(2.4, 0.6, smooth(u));
-      camZ = lerp(11.6, 12.4, smooth(u));
-      lookX = lerp(0, 6, smooth(u));
+      // Stations B + C · LOCKED 3/4 view (no continuous orbit)
+      // Tiny breathing zoom keeps the shot from feeling frozen.
+      const u = (t - 0.18) / 0.36;
+      const breathe = Math.sin(u * Math.PI) * 0.4;
+      camX = Math.sin(0.45) * 11.5;
+      camY = 0.8;
+      camZ = Math.cos(0.45) * 11.5 - breathe;
+    } else if (t < 0.74) {
+      // Station D · pull camera straight back, look at center
+      const u = (t - 0.54) / 0.20;
+      camX = lerp(Math.sin(0.45) * 11.5, 0, smooth(u));
+      camY = lerp(0.8, 0.4, smooth(u));
+      camZ = lerp(Math.cos(0.45) * 11.5, 13.5, smooth(u));
     } else if (t < 0.92) {
-      // Pull back for full sash + lock points
-      const u = (t - 0.72) / 0.20;
-      camX = lerp(0.4, 0.0, smooth(u));
-      camY = lerp(0.6, 0.4, smooth(u));
-      camZ = lerp(12.4, 14.5, smooth(u));
-      lookX = lerp(6, 0, smooth(u));
+      // Station E · slightly further back for the whole sash
+      const u = (t - 0.74) / 0.18;
+      camX = 0;
+      camY = lerp(0.4, 0.3, smooth(u));
+      camZ = lerp(13.5, 15.0, smooth(u));
     } else {
-      // Final reassembly — slow drift
+      // Station F · tiny drift around final composition
       const u = (t - 0.92) / 0.08;
-      camX = Math.sin(0.6 + u * 0.4) * 13;
-      camY = 0.6;
-      camZ = Math.cos(0.6 + u * 0.4) * 13;
+      const ang = u * 0.4;
+      camX = Math.sin(ang) * 13.5;
+      camY = 0.5;
+      camZ = Math.cos(ang) * 13.5;
     }
     camera.position.set(camX, camY, camZ);
     camera.lookAt(lookX, lookY, lookZ);
 
-    /* ---- profile group: rotate during station A; settles after ---- */
+    /* ─── PROFILE GROUP rotation: rotate in A, then LOCK ─── */
     if (t < 0.18) {
+      // Station A · spin to discover all 4 sides, then settle
       const u = t / 0.18;
-      profileGroup.rotation.y = u * Math.PI * 1.6;
-      profileGroup.rotation.x = -0.05 - u * 0.12;
-    } else if (t < 0.54) {
-      profileGroup.rotation.y = lerp(Math.PI * 1.6, Math.PI * 1.85, (t - 0.18) / 0.36);
-      profileGroup.rotation.x = -0.17;
-    } else if (t < 0.72) {
-      // slide profile group off-stage left as glazing takes over
-      const u = (t - 0.54) / 0.18;
-      profileGroup.position.x = lerp(0, -7, smooth(u));
-      profileGroup.rotation.y = lerp(Math.PI * 1.85, Math.PI * 2.2, u);
-    } else if (t < 0.92) {
-      profileGroup.position.x = -7;
-      profileGroup.visible = false;
+      // Single 270° sweep that ends exactly at PROFILE_REST_Y
+      const target = PROFILE_REST_Y - Math.PI * 1.5;
+      profileGroup.rotation.y = lerp(0, target, smooth(u));
+      profileGroup.rotation.x = lerp(-0.05, PROFILE_REST_X, smooth(u));
     } else {
-      // Reassembly: bring profile back
-      const u = (t - 0.92) / 0.08;
-      profileGroup.visible = true;
-      profileGroup.position.x = lerp(-7, 0, easeOut(u));
-      profileGroup.rotation.y = lerp(Math.PI * 2.2, Math.PI * 2.6, easeOut(u));
+      profileGroup.rotation.y = PROFILE_REST_Y - Math.PI * 1.5;
+      profileGroup.rotation.x = PROFILE_REST_X;
     }
-    if (t < 0.72) profileGroup.visible = true;
+    profileGroup.position.set(0, 0, 0);
 
-    /* ---- STEEL CORE: drops in 0.18 → 0.30 ---- */
+    /* ─── STEEL CORE · Station B (0.18 → 0.30 entry, holds) ─── */
     {
       const u = clamp01((t - 0.18) / 0.12);
       const eu = easeOut(u);
       steel.position.y = lerp(-10, STEEL_HOME.y, eu);
-      // Slight wobble tail
       if (u > 0 && u < 1) {
-        steel.position.y += Math.sin(u * Math.PI * 4) * 0.05 * (1 - u);
+        steel.position.y += Math.sin(u * Math.PI * 4) * 0.04 * (1 - u);
       }
     }
 
-    /* ---- GASKET OUTER drops, GASKET INNER slides 0.34 → 0.50 ---- */
+    /* ─── EPDM GASKETS · Station C (0.36 → 0.50) ─── */
     {
-      const u1 = clamp01((t - 0.34) / 0.10);
+      const u1 = clamp01((t - 0.36) / 0.10);
       gasketOuter.position.y = lerp(9, GASKET_OUTER_HOME.y, easeOut(u1));
       const u2 = clamp01((t - 0.42) / 0.10);
       gasketInner.position.x = lerp(-9, GASKET_INNER_HOME.x, easeOut(u2));
     }
 
-    /* ---- GLAZING pack: appears at 0.54, panes separate then rejoin ---- */
-    if (t >= 0.50 && t < 0.94) {
-      glazingGroup.visible = true;
-      // entry
-      const entry = clamp01((t - 0.50) / 0.06);
-      glazingGroup.position.x = lerp(10, 6, easeOut(entry));
-      glazingGroup.position.y = 0;
-      glazingGroup.rotation.y = lerp(0.6, 0.0, easeOut(entry));
+    /* ─── CROSS-FADE: profile ↔ glazing ↔ sash via opacity ─── */
+    let opProfile, opGlazing, opSash;
+    if (t < 0.50) {
+      opProfile = 1; opGlazing = 0; opSash = 0;
+    } else if (t < 0.58) {
+      // profile → glazing
+      const u = (t - 0.50) / 0.08;
+      opProfile = 1 - u; opGlazing = u; opSash = 0;
+    } else if (t < 0.72) {
+      opProfile = 0; opGlazing = 1; opSash = 0;
+    } else if (t < 0.78) {
+      // glazing → sash
+      const u = (t - 0.72) / 0.06;
+      opProfile = 0; opGlazing = 1 - u; opSash = u;
+    } else if (t < 0.94) {
+      opProfile = 0; opGlazing = 0; opSash = 1;
+    } else {
+      // reassembly · fade profile back over the sash
+      const u = (t - 0.94) / 0.06;
+      opProfile = u; opGlazing = 0; opSash = 1 - u * 0.4;
+    }
 
-      // pane separation
+    setGroupOpacity(profileGroup, opProfile);
+    profileGroup.visible = opProfile > 0.01;
+
+    glazingGroup.visible = opGlazing > 0.01;
+    if (glazingGroup.visible) {
+      setGroupOpacity(glazingGroup, opGlazing);
+      glazingGroup.position.set(0, 0, 0);
+      glazingGroup.rotation.y = -0.12;
+
+      // Pane separation: peaks mid-station, closes by end
       let sep = 0;
-      if (t < 0.70) sep = clamp01((t - 0.56) / 0.10);
-      else if (t < 0.78) sep = 1 - clamp01((t - 0.70) / 0.08);
+      if (t < 0.66) sep = smooth(clamp01((t - 0.56) / 0.08));
+      else sep = 1 - smooth(clamp01((t - 0.66) / 0.06));
       panes.forEach(p => {
         p.position.z = lerp(p.userData.assembled, p.userData.exploded, sep);
       });
-      spacerTop.material.opacity = 0.4 + sep * 0.6;
-      spacerBot.material.opacity = 0.4 + sep * 0.6;
-      spacerTop.material.transparent = true;
-      spacerBot.material.transparent = true;
-
-      // exit
-      if (t > 0.78) {
-        const exit = clamp01((t - 0.78) / 0.10);
-        glazingGroup.position.x = lerp(6, 14, easeOut(exit));
-        glazingGroup.rotation.y = lerp(0, 0.4, easeOut(exit));
-      }
-    } else {
-      glazingGroup.visible = false;
     }
 
-    /* ---- SASH WINDOW + lock points 0.72 → 1.00 ---- */
-    if (t >= 0.70) {
-      sashGroup.visible = true;
-      const entry = clamp01((t - 0.70) / 0.06);
-      sashGroup.position.x = lerp(8, 0, easeOut(entry));
-      sashGroup.position.y = 0;
-      // Pulse the lock points sequentially during 0.74 → 0.90
-      const pulseStart = 0.74, pulseEnd = 0.90;
-      const pp = clamp01((t - pulseStart) / (pulseEnd - pulseStart));
+    sashGroup.visible = opSash > 0.01;
+    if (sashGroup.visible) {
+      setGroupOpacity(sashGroup, opSash);
+      sashGroup.position.set(0, 0, 0);
+      sashGroup.rotation.y = -0.12;
+
+      // Lock cams pulse outward, sequenced around the perimeter
+      const pp = clamp01((t - 0.78) / 0.12);
       lockPoints.forEach((lp, i) => {
         const phase = clamp01(pp - (i / lockPoints.length) * 0.5) * 2;
         const intensity = Math.max(0, Math.sin(phase * Math.PI));
         lp.material.emissiveIntensity = 0.2 + intensity * 1.6;
-        // cam outward pop
-        const pop = intensity * 0.25;
-        if (lp.userData.basePos.x > 0) lp.position.x = lp.userData.basePos.x + pop;
-        else if (lp.userData.basePos.x < 0) lp.position.x = lp.userData.basePos.x - pop;
-        if (lp.userData.basePos.y > F_H/2 - 0.5) lp.position.y = lp.userData.basePos.y + pop;
-        else if (lp.userData.basePos.y < -F_H/2 + 0.5) lp.position.y = lp.userData.basePos.y - pop;
+        const pop = intensity * 0.22;
+        const bp = lp.userData.basePos;
+        lp.position.x = bp.x + (bp.x > 0 ? pop : (bp.x < 0 ? -pop : 0));
+        lp.position.y = bp.y + (bp.y > F_H/2 - 0.5 ? pop : (bp.y < -F_H/2 + 0.5 ? -pop : 0));
       });
-      // Whole sash gentle rotation during pulse
-      sashGroup.rotation.y = Math.sin(t * 4.0) * 0.05;
-    } else {
-      sashGroup.visible = false;
     }
 
     /* ---- HOTSPOTS: position + visibility ---- */
